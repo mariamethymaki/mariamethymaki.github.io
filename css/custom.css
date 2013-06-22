@@ -1,0 +1,99 @@
+body {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.navbar-inner {
+    min-height : 30px;
+}
+
+.navbar-inner {
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#ffffff));
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -o-linear-gradient(top, #ffffff, #ffffff);
+  background-image: linear-gradient(top, #ffffff, #ffffff);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'ffffff, endColorstr='#'ffffff, GradientType=0);
+}
+
+.navbar .brand {
+  padding: 5px;
+  font-size: 14px;
+  color: #0a0a0a;
+}
+
+.navbar .divider-vertical {
+  height: 21px;
+  background-color: #ffffff;
+  border-right: 1px solid #ffffff;
+}
+
+.navbar .nav > li > a {
+  padding: 5px 5px 6px;
+  font-size: 12px;
+  color: #0a0a0a;
+}
+
+.navbar .nav > li > a:hover {
+   color: #414141;
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  //color: #ffffff;
+  //background-color: #414141;
+  font-weight:bold;
+  background-color: #ffffff;
+  color: #414141;
+}
+
+.nav .nav-header {
+    text-transform:none;
+}
+
+.sidebar-nav-fixed {
+    padding: 9px 0;
+    position:fixed;
+    left:20px;
+    top:60px;
+    width:150px;
+    height:80%;
+    background-color: #333333;
+}
+
+.sidebar-nav-fixed .nav > .active > a,
+.sidebar-nav-fixed .nav > .active > a:hover,
+.sidebar-nav-fixed .nav > .active > a:focus {
+  font-weight:bold;
+  background-color: #ffffff;
+  color: #414141;
+}
+
+.sidebar-nav-fixed .nav > li > a {
+  font-size: 12px;
+  color: #0a0a0a;
+}
+
+.sidebar-nav-fixed .nav > li > a:hover {
+   color: #414141;
+}
+
+.row-fluid > .span-fixed-sidebar {
+    margin-left: 210px;
+}
+
+
+#apokalypsi{
+    width:660px;
+    height:540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#apokalypsi .turn-page{
+    background-color:#ccc;
+    background-size:100% 100%;
+}
