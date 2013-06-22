@@ -1,21 +1,30 @@
+html {
+    background: rgb(254,255,232); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(254,255,232,1) 0%, rgba(214,219,191,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,232,1)), color-stop(100%,rgba(214,219,191,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(254,255,232,1) 0%,rgba(214,219,191,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(254,255,232,1) 0%,rgba(214,219,191,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(254,255,232,1) 0%,rgba(214,219,191,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(254,255,232,1) 0%,rgba(214,219,191,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8', endColorstr='#d6dbbf',GradientType=0 ); /* IE6-9 */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+
 body {
     padding-top: 80px;
     padding-bottom: 40px;
     font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+    background:transparent;
 }
 
 .navbar-inner {
     min-height : 30px;
-}
-
-.navbar-inner {
-  background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
-  background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#ffffff));
-  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
-  background-image: -o-linear-gradient(top, #ffffff, #ffffff);
-  background-image: linear-gradient(top, #ffffff, #ffffff);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'ffffff, endColorstr='#'ffffff, GradientType=0);
+    background:transparent;
 }
 
 .navbar .brand {
@@ -61,14 +70,15 @@ body {
     top:60px;
     width:150px;
     height:80%;
-    background-color: #ffffff;
+    //background-color: #ffffff;
+    background-color: none;
 }
 
 .sidebar-nav-fixed .nav > .active > a,
 .sidebar-nav-fixed .nav > .active > a:hover,
 .sidebar-nav-fixed .nav > .active > a:focus {
   font-weight:bold;
-  background-color: #ffffff;
+  background-color: transparent;
   color: #414141;
 }
 
@@ -79,6 +89,7 @@ body {
 
 .sidebar-nav-fixed .nav > li > a:hover {
    color: #414141;
+   background-color: transparent;
 }
 
 .row-fluid > .span-fixed-sidebar {
@@ -95,6 +106,19 @@ body {
 }
 
 #apokalypsi .turn-page{
+    background-color:#ccc;
+    background-size:100% 100%;
+}
+
+#tetradio{
+    width:100%;
+    height:550px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+}
+
+#tetradio .turn-page{
     background-color:#ccc;
     background-size:100% 100%;
 }
