@@ -4900,9 +4900,8 @@ a.badge:hover {
   font-size: 40px;
   font-weight: 100;
   line-height: 15px;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
-  background: #222222;
   border: 0px solid #ffffff;
   -webkit-border-radius: 23px;
      -moz-border-radius: 23px;
@@ -4917,7 +4916,7 @@ a.badge:hover {
 }
 
 .carousel-control:hover {
-  color: #ffffff;
+  color: #222222;
   text-decoration: none;
   opacity: 0.9;
   filter: alpha(opacity=90);
