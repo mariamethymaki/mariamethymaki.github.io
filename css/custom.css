@@ -122,3 +122,11 @@ body {
     background-color:#ccc;
     background-size:100% 100%;
 }
+
+.anaglyph-inner{
+    text-align: center;
+}
+
+.anaglyph-inner img {
+    margin: 0 auto;
+}
