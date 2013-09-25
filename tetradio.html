@@ -63,7 +63,7 @@
                     </ul><!--/nav nav-list-->
                 </div><!--/sidebar-nav-fixed -->
             </div><!--/span2-->
-            <div class="span8">
+            <div class="span8 tetradio-container">
                 <div id="tetradio">
                     <div style="background-image:url(img/tetradio/00.jpg);"></div>
                     <div style="background-image:url(img/tetradio/01.jpg);"></div>
@@ -212,33 +212,41 @@
     <script src="js/turn.min.js"></script>
 
     <script type="text/javascript">
-    $(window).ready(function() {
-        $('#tetradio').turn({
-            display: 'double',
-            acceleration: true,
-            gradients: !$.isTouch,
-            elevation:50,
-            when: {
-                turned: function(e, page) {
-                    currentView = $(this).turn('view');
-                    //console.log(currentView[0]);
-                    //console.log(currentView[1]);
-                    if (currentView[1] == 1)
-                        $('.page-description span').text('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-                    else
-                        $('.page-description span').text('Test Test Test ' + currentView[1])
-                    //console.log('Current view: ', currentView);
-                }
-            }
-        });
-    });
+        $(window).ready(function() {
+            console.log('Tetradio width : ', $('#tetradio').width());
+            console.log('Container width : ', $('.tetradio-container').width());
+            containerWidth = $('.tetradio-container').width();
+            tetradioHeight = Math.round((containerWidth/2)*550/380);
+            console.log('Optimal height :', tetradioHeight);
 
-    $(window).bind('keydown', function(e){
-        if (e.keyCode==37)
-            $('#tetradio').turn('previous');
-        else if (e.keyCode==39)
-            $('#tetradio').turn('next');
-    });
+            $('#tetradio').css("width", containerWidth+"px").css("height", tetradioHeight+"px");
+
+            $('#tetradio').turn({
+                display: 'double',
+                acceleration: true,
+                gradients: !$.isTouch,
+                elevation:50,
+                when: {
+                    turned: function(e, page) {
+                        currentView = $(this).turn('view');
+                        //console.log(currentView[0]);
+                        //console.log(currentView[1]);
+                        if (currentView[1] == 1)
+                            $('.page-description span').text('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+                        else
+                            $('.page-description span').text('Test Test Test ' + currentView[1])
+                        //console.log('Current view: ', currentView);
+                    }
+                }
+            });
+        });
+
+        $(window).bind('keydown', function(e){
+            if (e.keyCode==37)
+                $('#tetradio').turn('previous');
+            else if (e.keyCode==39)
+                $('#tetradio').turn('next');
+        });
     </script>
 
   </body>
