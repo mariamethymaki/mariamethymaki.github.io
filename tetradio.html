@@ -191,8 +191,9 @@
                     <div style="background-image:url(img/tetradio/123.jpg);"></div>
                 </div> <!--/tetradio-->
             </div><!--/span8-->
-            <div class="span2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div class="span2 page-description">
+                <span>
+                <span>
             </div><!--/span2-->
         </div><!--/row-fluid-->
         <footer>
@@ -219,7 +220,14 @@
             elevation:50,
             when: {
                 turned: function(e, page) {
-                    /*console.log('Current view: ', $(this).turn('view'));*/
+                    currentView = $(this).turn('view');
+                    //console.log(currentView[0]);
+                    //console.log(currentView[1]);
+                    if (currentView[1] == 1)
+                        $('.page-description span').text('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+                    else
+                        $('.page-description span').text('Test Test Test ' + currentView[1])
+                    //console.log('Current view: ', currentView);
                 }
             }
         });
