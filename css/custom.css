@@ -85,6 +85,7 @@ body {
 .sidebar-nav-fixed .nav > li > a {
   font-size: 12px;
   color: #0a0a0a;
+  padding-bottom: 15px;
 }
 
 .sidebar-nav-fixed .nav > li > a:hover {
@@ -134,4 +135,17 @@ body {
 .footer {
     background-color: #414141;
     height : 50px;
+}
+
+#cv {
+    height : 500px;
+    overflow: hidden;
+}
+
+#cv p{
+    text-align: justify;
+}
+
+.aboutsubsection {
+    float: right;
 }
