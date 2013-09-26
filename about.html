@@ -42,9 +42,9 @@
           <a class="brand" href="index.htm">Maria Methimaki</a>
           <div class="nav-collapse">
             <ul class="nav pull-right">
-              <li class="active"><a href="index.htm">Home</a></li>
+              <li><a href="index.htm">Home</a></li>
               <li><a href="tetradio.html">ArtWork</a></li>
-              <li><a href="about.html">About</a></li>
+              <li class="active"><a href="about.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul><!-- /.nav -->
           </div><!--/.nav-collapse -->
@@ -53,30 +53,6 @@
     </div><!-- /.navbar -->
 
     <div class="container">
-      <!--  Carousel -->
-      <!--  consult Bootstrap docs at 
-            http://twitter.github.com/bootstrap/javascript.html#carousel -->
-      <div id="this-carousel-id" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="item active">
-            <a href="#">
-                <img src="img/front/front01.jpg" alt="" />
-            </a>
-          </div>
-          <div class="item">
-            <a href="#">
-              <img src="img/front/front02.jpg" alt="" />
-            </a>
-          </div>
-        </div><!-- .carousel-inner -->
-        <!--  next and previous controls here
-              href values must reference the id for this carousel -->
-      <!-- Example row of columns -->
-          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
-      </div><!-- .carousel -->
-      <!-- end carousel -->
-
       <footer class="navbar navbar-fixed-bottom">
         <div class="footer">
             Test footer
@@ -92,13 +68,5 @@
     <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
     <!-- Bootstrap jQuery plugins compiled and minified -->
     <script src="js/bootstrap.min.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('.carousel').carousel({
-          interval: 8000
-        });
-      });
-    </script>
-
   </body>
 </html>
