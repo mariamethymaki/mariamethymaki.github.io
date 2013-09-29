@@ -113,7 +113,7 @@ body {
 }
 
 #tetradio{
-    width:760px;
+    width:100%;
     height:550px;
     margin-left: auto;
     margin-right: auto;
@@ -153,8 +153,34 @@ body {
     float: right;
 }
 
-.or {
-    margin: auto;
-    padding-left: 30px;
+.col{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.col-wrap{
+    overflow: hidden; 
+}
+
+.page-description {
+    vertical-align: bottom;
+    float: none;
+}
+
+.instructions {
     text-align: center;
+}
+
+.floatright {
+    text-align : right;
+}
+
+.footer-left {
+    margin-left: 10px;
+    float : left;
+}
+
+.footer-right {
+    margin-right: 10px;
+    float : right;
 }
