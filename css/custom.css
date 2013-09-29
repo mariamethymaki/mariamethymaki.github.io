@@ -86,6 +86,7 @@ body {
   font-size: 12px;
   color: #0a0a0a;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .sidebar-nav-fixed .nav > li > a:hover {
@@ -139,6 +140,8 @@ body {
 
 #cv {
     height : 500px;
+    -webkit-overflow: hidden;
+    -moz-overflow: hidden;
     overflow: hidden;
 }
 
@@ -148,4 +151,10 @@ body {
 
 .aboutsubsection {
     float: right;
+}
+
+.or {
+    margin: auto;
+    padding-left: 30px;
+    text-align: center;
 }
