@@ -38,11 +38,6 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <a class="brand" href="index.htm">Maria Methimaki</a>
           <div class="nav-collapse">
             <ul class="nav pull-right">
@@ -68,7 +63,7 @@
                     </ul><!--/nav nav-list-->
                 </div><!--/sidebar-nav-fixed -->
             </div><!--/span2-->
-            <div class="span8">
+            <div class="span8 apokalypsi-container">
                 <div id="apokalypsi">
                     <div style="background-image:url(img/apokalypsi/01.jpg);"></div>
                     <div style="background-image:url(img/apokalypsi/02.jpg);"></div>
@@ -209,26 +204,39 @@
     <script src="js/turn.min.js"></script>
 
     <script type="text/javascript">
-    $(window).ready(function() {
-        $('#apokalypsi').turn({
-            display: 'double',
-            acceleration: true,
-            gradients: !$.isTouch,
-            elevation:50,
-            when: {
-                turned: function(e, page) {
-                    /*console.log('Current view: ', $(this).turn('view'));*/
-                }
-            }
-        });
-    });
+        $(window).ready(function() {
+            containerWidth = $('.apokalypsi-container').width();
+            height = Math.round((containerWidth/2)*550/380);
+            console.log("Width = ", containerWidth);
 
-    $(window).bind('keydown', function(e){
-        if (e.keyCode==37)
-            $('#apokalypsi').turn('previous');
-        else if (e.keyCode==39)
-            $('#apokalypsi').turn('next');
-    });
+            $('#apokalypsi').css("width", containerWidth+"px").css("height", height+"px");
+
+            $('#apokalypsi').turn({
+                display: 'double',
+                acceleration: true,
+                gradients: !$.isTouch,
+                elevation:50,
+                when: {
+                    turned: function(e, page) {
+                        currentView = $(this).turn('view');
+                        //console.log(currentView[0]);
+                        //console.log(currentView[1]);
+                        if (currentView[1] == 1)
+                            $('.page-description span').text('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+                        else
+                            $('.page-description span').text('Test Test Test ' + currentView[1])
+                        //console.log('Current view: ', currentView);
+                    }
+                }
+            });
+        });
+
+        $(window).bind('keydown', function(e){
+            if (e.keyCode==37)
+                $('#apokalypsi').turn('previous');
+            else if (e.keyCode==39)
+                $('#apokalypsi').turn('next');
+        });
     </script>
 
   </body>
