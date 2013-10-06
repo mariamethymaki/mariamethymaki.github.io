@@ -225,15 +225,22 @@
         $(window).ready(function() {
             console.log('Tetradio width : ', $('#tetradio').width());
             console.log('Container width : ', $('.tetradio-container').width());
-            containerWidth = $('.tetradio-container').width();
-            tetradioHeight = Math.round((containerWidth/2)*550/380);
-            console.log('Optimal height :', tetradioHeight);
+            optimalWidth = $('.tetradio-container').width();
+            containerHeight = $('.tetradio-container').height();
 
-            $('#tetradio').css("width", containerWidth+"px").css("height", tetradioHeight+"px");
+            optimalHeight = Math.round((optimalWidth/2)*550/380);
+            console.log('Optimal height :', optimalHeight, 'Container Height :', containerHeight);
+
+            if (containerHeight < optimalHeight)
+            {
+                optimalHeight = containerHeight;
+                optimalWidth = Math.round((optimalHeight*380*2/550));
+            }
+            $('#tetradio').css("width", optimalWidth+"px").css("height", optimalHeight+"px");
 
             $('#tetradio').turn({
                 display: 'double',
-                acceleration: true,
+                acceleration: false,
                 gradients: !$.isTouch,
                 elevation:50,
                 when: {
