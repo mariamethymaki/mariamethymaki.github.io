@@ -164,8 +164,13 @@ body {
 }
 
 .page-description {
-    vertical-align: bottom;
-    float: none;
+}
+
+#workdetails {
+    height : 500px;
+    -webkit-overflow: hidden;
+    -moz-overflow: hidden;
+    overflow: hidden;
 }
 
 .instructions {
