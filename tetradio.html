@@ -538,6 +538,8 @@
                         description += "<br/><br/>"
                         if (currentView[0] == 0)
                             description += "Cover Page";
+                        else if (currentView[1] == 0)
+                            description += "Back Cover Page"
                         else
                             description += "Pages : " + (currentView[0]-1) + "-" + (currentView[1]-1);
                         description += "<br/><br/>"

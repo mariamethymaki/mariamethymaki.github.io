@@ -189,10 +189,7 @@
                             <div style="background-image:url(img/apokalypsi/120.jpg);"></div>
                         </div> <!--/apokalypsi-->
                     </div><!--/span10-->
-                    <div class="span2" id="workdetails">
-                        An Aesthetic Essay on “The Book of Revelation”. 2011 <br/>
-                        60 Drawings. 15x20cm. <br/>
-                        Transparent Paper.Ink.Powders Hagiography.
+                    <div class="span2 page-description" id="workdetails">
                     </div><!--/span2-->
                 </div><!-- /row-fluid-->
             </div><!--/span10-->
@@ -209,6 +206,13 @@
         </footer>
 
     </div> <!-- /container -->
+    <!-- Hidden Page Divs -->
+    <div id="default-description" style="display: none;">
+        An Aesthetic Essay on “The Book of Revelation”. <br/>
+        2011 <br/>
+        60 Drawings. 15x20cm. <br/>
+        Transparent Paper.Ink.Powders Hagiography.
+    </div>.
 
     <!-- Le javascript
     ================================================== -->
@@ -241,13 +245,22 @@
                 when: {
                     turned: function(e, page) {
                         currentView = $(this).turn('view');
-                        //console.log(currentView[0]);
-                        //console.log(currentView[1]);
-                        if (currentView[1] == 1)
-                            $('.page-description span').text('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+                        pageId = '#page' + currentView[0]
+                        console.log(currentView[0]);
+                        console.log(pageId);
+                        description = $('#default-description').html();
+                        description += "<br/><br/>"
+
+                        if (currentView[0] == 0)
+                            description += "Cover Page";
+                        else if (currentView[1] == 0)
+                            description += "Back Cover Page"
                         else
-                            $('.page-description span').text('Test Test Test ' + currentView[1])
-                        //console.log('Current view: ', currentView);
+                            description += "Pages : " + (currentView[0]-1) + "-" + (currentView[1]-1);
+                        description += "<br/><br/>"
+                        if ($(pageId).length)
+                            description += $(pageId).html();
+                        $('.page-description').html(description);
                     }
                 }
             });
