@@ -29,7 +29,7 @@
 
   <body>
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top" id="topmenu">
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="brand" href="index.htm">Maria Methimaki</a>
@@ -190,14 +190,9 @@
                     <div class="span2 page-description" id="workdetails">
                     </div><!--/span2-->
                 </div> <!-- row fluid -->
-                <div class="row-fluid">
-                    <div class="span4 instructions">
-                        <br/>Use the keyboard arrows or your mouse in order to thumb through the book.
-                    </div>
-                </div>
             </div><!--/span8-->
         </div><!--/row-fluid-->
-        <footer class="navbar navbar-fixed-bottom">
+        <footer class="navbar navbar-fixed-bottom" id="footer">
             <div class="footer">
                 <div class="footer-left">
                     (C) Photographs by Lefteris Parasyris
@@ -509,14 +504,20 @@
             console.log('Tetradio width : ', $('#tetradio').width());
             console.log('Container width : ', $('.tetradio-container').width());
             optimalWidth = $('.tetradio-container').width();
+            windowHeight = $(window).height() - $('.topmenu').height() - $('.footer').height() - 100;
+            containerWidth = $('.tetradio-container').width();
             containerHeight = $('.tetradio-container').height();
+
+            console.log("Container Width = ", containerWidth);
+            console.log("Container Height = ", containerHeight);
+            console.log("Window Height = ", windowHeight);
 
             optimalHeight = Math.round((optimalWidth/2)*550/380);
             console.log('Optimal height :', optimalHeight, 'Container Height :', containerHeight);
 
-            if (containerHeight < optimalHeight)
+            if (windowHeight < optimalHeight)
             {
-                optimalHeight = containerHeight;
+                optimalHeight = windowHeight;
                 optimalWidth = Math.round((optimalHeight*380*2/550));
             }
             $('#tetradio').css("width", optimalWidth+"px").css("height", optimalHeight+"px");

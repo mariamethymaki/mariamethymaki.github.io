@@ -35,7 +35,7 @@
 
   <body>
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top" id="topmenu">
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="brand" href="index.htm">Maria Methimaki</a>
@@ -195,14 +195,9 @@
                         Transparent Paper.Ink.Powders Hagiography.
                     </div><!--/span2-->
                 </div><!-- /row-fluid-->
-                <div class="row-fluid">
-                    <div class="span4 instructions">
-                        <br/>Use the keyboard arrows or your mouse in order to thumb through the book.
-                    </div>
-                </div>
             </div><!--/span10-->
         </div><!--/row-fluid-->
-        <footer class="navbar navbar-fixed-bottom">
+        <footer class="navbar navbar-fixed-bottom" id="footer">
             <div class="footer">
                 <div class="footer-left">
                     (C) Photographs by Lefteris Parasyris
@@ -226,12 +221,18 @@
 
     <script type="text/javascript">
         $(window).ready(function() {
+            optimalWidth = $('.apokalypsi-container').width();
+            windowHeight = $(window).height() - $('.topmenu').height() - $('.footer').height() - 100;
             containerWidth = $('.apokalypsi-container').width();
-            height = Math.round((containerWidth/2)*550/380);
-            console.log("Width = ", containerWidth);
-
-            $('#apokalypsi').css("width", containerWidth+"px").css("height", height+"px");
-
+            containerHeight = $('.apokalypsi-container').height();
+            optimalHeight = Math.round((optimalWidth/2)*550/380);
+            if (windowHeight < optimalHeight)
+            {
+                optimalHeight = windowHeight;
+                optimalWidth = Math.round((optimalHeight*380*2/550));
+            }
+            $('#apokalypsi').css("width", optimalWidth+"px").css("height", optimalHeight+"px");
+            $('#workdetails').css("height", optimalHeight + "px");
             $('#apokalypsi').turn({
                 display: 'double',
                 acceleration: true,
