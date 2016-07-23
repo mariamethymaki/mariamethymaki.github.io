@@ -181,6 +181,10 @@ body {
     text-align : right;
 }
 
+.floatleft {
+    text-align : left;
+}
+
 .footer-left {
     margin-left: 10px;
     float : left;
