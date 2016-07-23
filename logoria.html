@@ -9,29 +9,8 @@
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-    <link href="css/lensview.css" rel="stylesheet">
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
-    <!-- Bootstrap jQuery plugins compiled and minified -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/lensview.2.0.min.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        $(function(){
-            $("img.anaglyph").lensView({ 
-                overlay: true,
-                overlayOpacity: .3,
-                size: 300,
-                innerHTML: '<span class="innerhtml">© M.Methimaki</span>' 
-            });
-        });
-    </script>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -50,7 +29,7 @@
 
   <body>
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top" id="topmenu">
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="brand" href="index.htm">Maria Methimaki</a>
@@ -74,34 +53,41 @@
                         <li><a href="kalymnos.html">CalamoClaros<br/>CalminoCalimno<br/>CalimeneCalymna</a></li>
                         <li><a href="tetradio.html">01NoteBook<br/>or<br/>122Designs</a></li>
                         <li><a href="tetradiovideo.html">Prosthetic Method<br/>on<br/>Notebook</a></li>
-                        <li class="active"><a href="anaglyph.html">The Anaglyph</a></li>
-                        <li><a href="anaglyphdetails.html">The Anaglyph<br/> (in Detail)</a></li>
+                        <li><a href="anaglyph.html">The Anaglyph</a></li>
+                        <li><a href="anaglyphdetails.html">The Anaglyph<br/>(in Detail)</a></li>
                         <li><a href="invisiblecities.html">Invisible Cities</a></li>
                         <li><a href="copperwork.html">CopperWork</a></li>
                         <li><a href="copperworkdetails.html">CopperWork <br/> (in Detail)</a></li>
                         <li><a href="apokalypsi.html">Book<br/>of<br/>Revelation</a></li>
                         <li><a href="managea.html">Manna Gea</a></li>
                         <li><a href="manageadetails.html">Manna Gea<br/>(in Detail)</a></li>
-                        <li><a href="logoria.html">Logoria</a></li>
+                        <li class="active"><a href="logoria.html">Logoria</a></li>
                         <li><a href="wavescript.html">WaveScript</a></li>
                     </ul><!--/nav nav-list-->
                 </div><!--/sidebar-nav-fixed -->
             </div><!--/span2-->
             <div class="span10">
                 <div class="row-fluid">
-                    <div class="span12">
-                        <img src="img/anaglyph_color.jpg" alt="" class="anaglyph"/>
-                    </div><!--/span8-->
+                    <iframe src="//player.vimeo.com/video/147490580?color=fafcfc" width="600" height="337" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+                    </iframe> 
+                    <p>
+                        <a href="http://vimeo.com/147490580">Invisible Cities</a> 
+                        from <a href="http://vimeo.com/user23115050">Maria Methimaki</a> 
+                        on <a href="https://vimeo.com">Vimeo</a>.
+                    </p> 
+                    <p>
+                    Kublai Khan had noticed that Marco Polo's cities resembled one another, as if the passage from 
+                    one to another involved not a journey but a change of elements. Now, from each city Marco 
+                    described to him, the Great Khan's mind set out on its own, and after dismantling the city piece 
+                    by piece, he reconstructed it in other ways, substituting components, shifting them, inverting 
+                    them.
+                    <br/><br/>
+                    Italo Calvino Invisible Cities Pg.43
+                    </p>
                 </div>
-                <div class="row-fluid">
-                    <div class="span12 floatright">
-                        The Anaglyph. 2012-2013.
-                        Plaster.Wax.Fabric.Paper.Printing Ink. 210x500cm
-                    </div>
-                </div>
-            </div>
+            </div><!--/span8-->
         </div><!--/row-fluid-->
-        <footer class="navbar navbar-fixed-bottom">
+        <footer class="navbar navbar-fixed-bottom" id="footer">
             <div class="footer">
                 <div class="footer-left">
                     (C) Photographs by Lefteris Parasyris
@@ -111,7 +97,15 @@
                 </div>
             </div>
         </footer>
+
     </div> <!-- /container -->
 
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+    <!-- Bootstrap jQuery plugins compiled and minified -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
