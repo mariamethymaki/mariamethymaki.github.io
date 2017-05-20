@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* -----------------------------------------------------------------------
+
+ Lensview Default Stylesheet
+ http://joeyvo.me
+
+   * Copyright (c) 2012-Present.
+   * See HELP for instructions on how to use Lensview.
+
+----------------------------------------------------------------------- */
+
+/* ---- This is de default style for the lens. ---- 
+   ---- Feel free to customize or use your own. ---- */
+   
+.lensView { 
+	box-shadow: 0px 1px 5px #000, inset 0px 1px 20px rgba(255,255,255,0.5);	
+	-webkit-box-shadow: 0px 1px 5px #000, inset 0px 1px 20px rgba(255,255,255,0.5);	
+  	-moz-box-shadow: 0px 1px 5px #000, inset 0px 1px 20px rgba(255,255,255,0.5);	
+	cursor: none;
+}
+
+/* ---- This is de default style for the image overlay. ---- 
+   ---- Feel free to customize or use your own. ---- */
+
+.Lens-overlay { 
+	display: inline-block; 
+	background: #fff;
+	cursor: none; 
+} 
+
+/* ---- This is de default style for the lens caption. ---- 
+   ---- Feel free to customize or use your own. ---- */
+
+.Lens-caption { 
+	display: block; 
+	background: #000; 
+	color: #fff; 
+	font-size: 11px; 
+	padding: 7px 9px; 
+}
+
