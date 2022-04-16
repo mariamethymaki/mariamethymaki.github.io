@@ -194,3 +194,11 @@ body {
     margin-right: 10px;
     float : right;
 }
+
+video{
+	width: 100%;
+	height: auto;
+	border:solid 0px black;
+}
+
+video:focus { outline:none; }
