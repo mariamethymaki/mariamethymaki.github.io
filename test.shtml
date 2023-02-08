@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Μαρία Μεθυμάκη</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link rel="shortcut icon" href="favicon.png">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <!-- Commented out - update these with your own files -->
+    <!-- 
+      <link rel="shortcut icon" href="ico/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png"> 
+    -->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.htm">Maria Methimaki</a>
+          <div class="nav-collapse">
+            <ul class="nav pull-right">
+              <li class="active"><a href="index.htm">Home</a></li>
+              <li><a href="kalymnos.html">ArtWork</a></li>
+              <li><a href="hotel.html">Architecture</a></li>
+              <li><a href="about.html">Bio</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul><!-- /.nav -->
+          </div><!--/.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
+
+    <div class="container" >
+      <div align="center" class="embed-responsive embed-responsive-16by9">
+	     
+        <video autoplay muted loop>
+		<source src="https://github.com/mariamethymaki/mariamethymaki.github.io/raw/c8b4cf9c13ef21ab1c38856250d205100c5e33e4/videos/hammer_intro.mov" type="video/mp4">
+		Sorry, your browser doesn't support embedded videos.
+	</video>
+      </div>
+
+      <footer class="navbar navbar-fixed-bottom">
+        <div class="footer">
+            <div class="footer-left">
+                (C) Photographs by Lefteris Parasyris
+            </div>
+            <div class="footer-right">
+                (C) Design by artist's sister's boyfriend
+            </div>
+        </div>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+    <!-- Bootstrap jQuery plugins compiled and minified -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
