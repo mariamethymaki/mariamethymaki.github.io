@@ -31,7 +31,7 @@ $(window).ready(function() {
                 description += "<br/><br/>"
                 if ($(pageId).length)
                     description += $(pageId).html();
-                if (currentView[0] == 0)
+                if (description.replace(/\s+/g, '') != '')
                     description = '<div class="cover-text">' + description.replace(/(\s|<br\s*\/?>)+$/gi, '') + '</div>';
                 $('.tetradio-description').html(description);
             }
