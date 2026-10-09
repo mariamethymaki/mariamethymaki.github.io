@@ -210,6 +210,7 @@ video{
     font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
     line-height: 18px;
+    text-align: left;
 }
 
 .work-dimensions {
@@ -234,14 +235,15 @@ video{
 
 .nominedei-description {
     font-family: methimaki;
-    font-size: 8px;
-    line-height: 7px;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: justify;
     padding-right: 30px;
 }
 
 @media (max-width: 767px) {
     .nominedei-description {
-        font-size:7px;
+        font-size:16px;
         padding-left: 30px;
         padding-right: 30px;
     }
