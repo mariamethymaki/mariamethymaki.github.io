@@ -30,6 +30,8 @@ $(window).ready(function() {
                 description += "<br/><br/>"
                 if ($(pageId).length)
                     description += $(pageId).html();
+                if (currentView[0] == 0)
+                    description = '<div class="cover-text">' + description + '</div>';
                 $('.tetradio-description').html(description);
             }
         }

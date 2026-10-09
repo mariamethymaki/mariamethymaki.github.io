@@ -33,6 +33,8 @@ $(window).ready(function() {
                 description += "<br/><br/>";
                 if(currentView[1] != 0)
                     description += $('#default-reference').html();
+                if (currentView[0] == 0)
+                    description = '<div class="cover-text">' + description + '</div>';
                 $('.apokalypsi-description').html(description);
             }
         }

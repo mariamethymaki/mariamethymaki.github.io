@@ -216,6 +216,22 @@ video{
     text-align: right;
 }
 
+/* cover text sits at the bottom of the right column (wide screens only) */
+@media (min-width: 992px) {
+    #workdetails {
+        position: relative;
+    }
+
+    .cover-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 30px;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+}
+
 .nominedei-description {
     font-family: methimaki;
     font-size: 24px;

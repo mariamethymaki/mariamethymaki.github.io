@@ -25,6 +25,8 @@ $(window).ready(function() {
                 description = "";
                 if ($(pageId).length)
                     description += $(pageId).html();
+                if (currentView[0] == 0)
+                    description = '<div class="cover-text">' + description + '</div>';
                 $('#workdetails').html(description);
             }
         }
