@@ -24,7 +24,7 @@ $(window).ready(function() {
                 pageId = '#page' + currentView[0]
                 description = "";
                 if (currentView[0] != 0 && currentView[1] != 0)
-                    description += '<div class="pages-line">Pages : ' + (currentView[0]-1) + '-' + (currentView[1]-1) + '</div><br/>';
+                    description += '<div class="pages-line">Pages: ' + (currentView[0]-1) + '-' + (currentView[1]-1) + '</div><br/>';
                 if ($(pageId).length)
                     description += $(pageId).html();
                 if (description.replace(/\s+/g, '') != '')

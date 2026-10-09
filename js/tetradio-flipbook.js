@@ -21,7 +21,7 @@ $(window).ready(function() {
             description = $('#default-description').html() + "<br/><br/>";
 
         if (currentView[0] != 0 && currentView[1] != 0)
-            description += "Pages : " + (currentView[0]-1) + "-" + (currentView[1]-1);
+            description += "Pages: " + (currentView[0]-1) + "-" + (currentView[1]-1);
         description += "<br/><br/>"
         if ($(pageId).length)
             description += $(pageId).html();
