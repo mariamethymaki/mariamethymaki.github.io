@@ -34,7 +34,7 @@ $(window).ready(function() {
                 if(currentView[1] != 0)
                     description += $('#default-reference').html();
                 if (currentView[0] == 0)
-                    description = '<div class="cover-text">' + description + '</div>';
+                    description = '<div class="cover-text">' + description.replace(/(\s|<br\s*\/?>)+$/gi, '') + '</div>';
                 $('.apokalypsi-description').html(description);
             }
         }

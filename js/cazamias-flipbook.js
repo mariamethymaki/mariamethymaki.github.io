@@ -26,7 +26,7 @@ $(window).ready(function() {
                 if ($(pageId).length)
                     description += $(pageId).html();
                 if (currentView[0] == 0)
-                    description = '<div class="cover-text">' + description + '</div>';
+                    description = '<div class="cover-text">' + description.replace(/(\s|<br\s*\/?>)+$/gi, '') + '</div>';
                 $('#workdetails').html(description);
             }
         }
