@@ -731,6 +731,15 @@ video{
     text-decoration: none;
 }
 
+/* caption under each Anaglypto detail photo */
+.detail-label {
+    font-size: 13px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-right: 2px;
+    text-align: right;
+}
+
 @media (max-width:767.98px){
     .anaglypto-description {
         font-size: 12px;
