@@ -736,9 +736,7 @@ video{
     position: absolute;
     top: 9%;
     height: 80%;
-    border: 2px solid rgba(255, 255, 255, 0.95);
     background: rgba(255, 255, 255, 0.16);
-    box-shadow: 0 0 14px rgba(0, 0, 0, 0.55);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.15s;
