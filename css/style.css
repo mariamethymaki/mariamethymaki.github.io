@@ -903,6 +903,11 @@ height: 300px;
     padding-right: 30px;
 }
 
+/* both copyright lines on one line */
+.copyright > div {
+    display: inline;
+}
+
 .sm-icon {
     font-size: 18px;
     color: #efefef;
