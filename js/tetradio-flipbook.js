@@ -15,6 +15,9 @@ $(window).ready(function() {
 
     function showDescription() {
         currentView = $('#tetradio').turn('view');
+        if (window.history && history.replaceState) {
+            history.replaceState(null, '', currentView[0] ? '#p=' + currentView[0] : window.location.pathname + window.location.search);
+        }
         pageId = '#page' + currentView[0]
         description = "";
         if (currentView[0] == 0)
@@ -31,7 +34,23 @@ $(window).ready(function() {
         $('.tetradio-description').html(description);
     }
 
+    /* remember the open spread across refreshes: #p=<left page> in the address;
+       logos.html?page=N (link from Anaglypto) has priority */
+    var startPage = 1;
+    var savedPage = /^#p=(\d+)$/.exec(window.location.hash);
+    if (savedPage) {
+        var saved = parseInt(savedPage[1], 10);
+        if (saved >= 2 && saved % 2 === 0 && saved <= $('#tetradio').children().length) { startPage = saved; }
+    }
+    var deepLink = /[?&]page=(\d+)/.exec(window.location.search);
+    if (deepLink) {
+        var wanted = parseInt(deepLink[1], 10);
+        if (wanted % 2) { wanted--; }
+        if (wanted >= 2 && wanted <= $('#tetradio').children().length) { startPage = wanted; }
+    }
+
     $('#tetradio').turn({
+        page: startPage,
         display: 'double',
         acceleration: false,
         gradients: !$.isTouch,
@@ -43,13 +62,7 @@ $(window).ready(function() {
         }
     });
 
-    /* logos.html?page=N opens the book on the spread whose left page is N */
-    var deepLink = /[?&]page=(\d+)/.exec(window.location.search);
-    if (deepLink) {
-        var startPage = parseInt(deepLink[1], 10);
-        if (startPage % 2) { startPage--; }
-        if (startPage >= 2 && startPage <= 122) { $('#tetradio').turn('page', startPage); showDescription(); }
-    }
+    showDescription();
 
     $('#workdetails').mousewheel(function(event, delta, deltaX, deltaY) {
         var scrollTop = $(this).scrollTop();

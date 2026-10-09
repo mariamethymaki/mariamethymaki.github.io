@@ -13,7 +13,17 @@ $(window).ready(function() {
     $('#apokalypsi').css("width", optimalWidth+"px").css("height", optimalHeight+"px");
     $('#workdetails').css("height", (optimalHeight) + "px");
 
+    /* remember the open spread across refreshes: #p=<left page> in the address;
+       logos.html?page=N (link from Anaglypto) has priority */
+    var startPage = 1;
+    var savedPage = /^#p=(\d+)$/.exec(window.location.hash);
+    if (savedPage) {
+        var saved = parseInt(savedPage[1], 10);
+        if (saved >= 2 && saved % 2 === 0 && saved <= $('#apokalypsi').children().length) { startPage = saved; }
+    }
+
     $('#apokalypsi').turn({
+        page: startPage,
         display: 'double',
         acceleration: false,
         gradients: !$.isTouch,
@@ -21,6 +31,9 @@ $(window).ready(function() {
         when: {
             turned: function(e, page) {
                 currentView = $(this).turn('view');
+                if (window.history && history.replaceState) {
+                    history.replaceState(null, '', currentView[0] ? '#p=' + currentView[0] : window.location.pathname + window.location.search);
+                }
                 if (currentView[0] == 0)
                     pageId = '#page0'
                 else
