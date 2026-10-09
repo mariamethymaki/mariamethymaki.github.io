@@ -13,6 +13,24 @@ $(window).ready(function() {
     $('#tetradio').css("width", optimalWidth+"px").css("height", optimalHeight+"px");
     $('#workdetails').css("height", (optimalHeight) + "px");
 
+    function showDescription() {
+        currentView = $('#tetradio').turn('view');
+        pageId = '#page' + currentView[0]
+        description = "";
+        if (currentView[0] == 0)
+            description = $('#default-description').html() + "<br/><br/>";
+
+        if (currentView[0] != 0 && currentView[1] != 0)
+            description += "Pages : " + (currentView[0]-1) + "-" + (currentView[1]-1);
+        description += "<br/><br/>"
+        if ($(pageId).length)
+            description += $(pageId).html();
+        if (description.replace(/\s+/g, '') != '')
+            description = '<div class="cover-text">' + description.replace(/(\s|<br\s*\/?>)+$/gi, '') +
+                (window.AnaglyptoLogos ? AnaglyptoLogos.linkHtml(currentView[0]) : '') + '</div>';
+        $('.tetradio-description').html(description);
+    }
+
     $('#tetradio').turn({
         display: 'double',
         acceleration: false,
@@ -20,23 +38,18 @@ $(window).ready(function() {
         elevation:50,
         when: {
             turned: function(e, page) {
-                currentView = $(this).turn('view');
-                pageId = '#page' + currentView[0]
-                description = "";
-                if (currentView[0] == 0)
-                    description = $('#default-description').html() + "<br/><br/>";
-
-                if (currentView[0] != 0 && currentView[1] != 0)
-                    description += "Pages : " + (currentView[0]-1) + "-" + (currentView[1]-1);
-                description += "<br/><br/>"
-                if ($(pageId).length)
-                    description += $(pageId).html();
-                if (description.replace(/\s+/g, '') != '')
-                    description = '<div class="cover-text">' + description.replace(/(\s|<br\s*\/?>)+$/gi, '') + '</div>';
-                $('.tetradio-description').html(description);
+                showDescription();
             }
         }
     });
+
+    /* logos.html?page=N opens the book on the spread whose left page is N */
+    var deepLink = /[?&]page=(\d+)/.exec(window.location.search);
+    if (deepLink) {
+        var startPage = parseInt(deepLink[1], 10);
+        if (startPage % 2) { startPage--; }
+        if (startPage >= 2 && startPage <= 122) { $('#tetradio').turn('page', startPage); showDescription(); }
+    }
 
     $('#workdetails').mousewheel(function(event, delta, deltaX, deltaY) {
         var scrollTop = $(this).scrollTop();

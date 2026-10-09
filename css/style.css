@@ -731,6 +731,76 @@ video{
     text-decoration: none;
 }
 
+/* Anaglypto panels <-> Logos texts */
+.anaglypto-hl {
+    position: absolute;
+    top: 9%;
+    height: 80%;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    z-index: 2;
+}
+
+.anaglypto-hl.on {
+    opacity: 1;
+}
+
+.anaglypto-panel-info {
+    padding-top: 10px;
+    padding-right: 2px;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+}
+
+.anaglypto-panel-info p {
+    margin: 0 0 6px;
+}
+
+.anaglypto-panel-info ul {
+    list-style: none;
+    margin: 4px 0 8px;
+    padding: 0;
+}
+
+.anaglypto-panel-info a,
+.anaglypto-link a {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+.anaglypto-panel-info a span {
+    opacity: 0.75;
+}
+
+.anaglypto-panel-buttons button {
+    width: 26px;
+    height: 26px;
+    margin-left: 4px;
+    padding: 0;
+    border: 1px solid #999;
+    background: transparent;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.anaglypto-panel-buttons button[aria-pressed="true"] {
+    background: #444;
+    border-color: #444;
+    color: #fff;
+}
+
+.anaglypto-link {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+}
+
 /* caption under each Anaglypto detail photo */
 .detail-label {
     font-size: 13px;
@@ -759,6 +829,7 @@ box-shadow: 0px 1px 5px #000, inset 0px 1px 10px rgba(255,255,255,0.5);
 -moz-box-shadow: 0px 1px 5px #000, inset 0px 1px 10px rgba(255,255,255,0.5);	
 border-radius: 0%;
 cursor: none;
+z-index: 1;
 /*Set the size of the magnifier glass:*/
 width: 300px;
 height: 300px;
