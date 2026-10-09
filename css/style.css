@@ -217,6 +217,14 @@ video{
     text-align: right;
 }
 
+/* the methimaki font has no usable digits (its "2" is blank): use the cover font */
+.pages-line {
+    font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+}
+
 /* cover text sits at the bottom of the right column (wide screens only) */
 @media (min-width: 992px) {
     #workdetails {
