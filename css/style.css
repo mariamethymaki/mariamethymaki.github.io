@@ -234,14 +234,14 @@ video{
 
 .nominedei-description {
     font-family: methimaki;
-    font-size: 24px;
-    line-height: 22px;
+    font-size: 8px;
+    line-height: 7px;
     padding-right: 30px;
 }
 
 @media (max-width: 767px) {
     .nominedei-description {
-        font-size:22px;
+        font-size:7px;
         padding-left: 30px;
         padding-right: 30px;
     }
