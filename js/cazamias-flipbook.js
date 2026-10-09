@@ -23,9 +23,11 @@ $(window).ready(function() {
                 currentView = $(this).turn('view');
                 pageId = '#page' + currentView[0]
                 description = "";
+                if (currentView[0] != 0 && currentView[1] != 0)
+                    description += "Pages : " + (currentView[0]-1) + "-" + (currentView[1]-1) + "<br/><br/>";
                 if ($(pageId).length)
                     description += $(pageId).html();
-                if (currentView[0] == 0)
+                if (description.replace(/\s+/g, '') != '')
                     description = '<div class="cover-text">' + description.replace(/(\s|<br\s*\/?>)+$/gi, '') + '</div>';
                 $('#workdetails').html(description);
             }
