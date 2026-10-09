@@ -22,8 +22,9 @@ $(window).ready(function() {
             turned: function(e, page) {
                 currentView = $(this).turn('view');
                 pageId = '#page' + currentView[0]
-                description = $('#default-description').html();
-                description += "<br/><br/>"
+                description = "";
+                if (currentView[0] == 0)
+                    description = $('#default-description').html() + "<br/><br/>";
 
                 if (currentView[0] != 0 && currentView[1] != 0)
                     description += "Pages : " + (currentView[0]-1) + "-" + (currentView[1]-1);
