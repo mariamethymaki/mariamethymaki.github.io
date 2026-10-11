@@ -195,8 +195,8 @@ video{
     background-size:100% 100%;
 }
 
-/*cazamias*/
-#cazamias{
+/*casamias*/
+#casamias{
     width:100%;
     height:1410px;
     margin-left: auto;
@@ -204,7 +204,7 @@ video{
     overflow:hidden;
 }
 
-#cazamias .turn-page{
+#casamias .turn-page{
     background-color:#ccc;
     background-size:100% 100%;
 }

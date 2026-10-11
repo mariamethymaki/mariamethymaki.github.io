@@ -10,7 +10,7 @@ $(window).ready(function() {
         optimalHeight = windowHeight;
         optimalWidth = Math.round((optimalHeight*1000*2/1410));
     }
-    $('#cazamias').css("width", optimalWidth+"px").css("height", optimalHeight+"px");
+    $('#casamias').css("width", optimalWidth+"px").css("height", optimalHeight+"px");
     $('#workdetails').css("height", (optimalHeight) + "px");
 
     /* remember the open spread across refreshes: #p=<left page> in the address;
@@ -19,10 +19,10 @@ $(window).ready(function() {
     var savedPage = /^#p=(\d+)$/.exec(window.location.hash);
     if (savedPage) {
         var saved = parseInt(savedPage[1], 10);
-        if (saved >= 2 && saved % 2 === 0 && saved <= $('#cazamias').children().length) { startPage = saved; }
+        if (saved >= 2 && saved % 2 === 0 && saved <= $('#casamias').children().length) { startPage = saved; }
     }
 
-    $('#cazamias').turn({
+    $('#casamias').turn({
         page: startPage,
         display: 'double',
         acceleration: false,
@@ -56,7 +56,7 @@ $(window).ready(function() {
 
 $(window).bind('keydown', function(e){
   if (e.keyCode==37)
-      $('#cazamias').turn('previous');
+      $('#casamias').turn('previous');
   else if (e.keyCode==39)
-      $('#cazamias').turn('next');
+      $('#casamias').turn('next');
 });
