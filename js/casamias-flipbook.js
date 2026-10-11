@@ -38,7 +38,7 @@ $(window).ready(function() {
                     /* one page on screen: show the description of the spread it belongs to (the left page is even) */
                     var n = page, left = (n === 1) ? 0 : (n % 2 === 0 ? n : n - 1);
                     var total = $(this).turn('pages');
-                    currentView = [left, (left >= 2 && left + 1 <= total) ? left + 1 : 0];
+                    currentView = [left, left === 0 ? 1 : (left + 1 <= total ? left + 1 : 0)];
                     if (window.history && history.replaceState) {
                         history.replaceState(null, '', n > 1 ? '#p=' + n : window.location.pathname + window.location.search);
                     }

@@ -11,7 +11,7 @@ $(window).ready(function () {
 
     var $book = $('#phenbook');
     var base = '/media/images/phenomena/' + book.slug + '/';
-    var single = book.ratio > 1.8;                      /* very wide pages (e.g. slides) are shown one at a time */
+    var single = book.ratio > 1.8 || window.matchMedia('(max-width: 767px)').matches;   /* very wide pages (slides) and phones: one page at a time */
     var total = single ? book.pages : book.pages + (book.pages % 2);   /* an empty last page keeps the spreads even */
     var imgs = [];
     function pad3(n) { return (n < 10 ? '00' : n < 100 ? '0' : '') + n; }
