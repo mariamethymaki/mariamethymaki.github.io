@@ -11,7 +11,8 @@ $(window).ready(function () {
 
     var $book = $('#phenbook');
     var base = '/media/images/phenomena/' + book.slug + '/';
-    var total = book.pages + (book.pages % 2);          /* an empty last page keeps the spreads even */
+    var single = book.ratio > 1.8;                      /* very wide pages (e.g. slides) are shown one at a time */
+    var total = single ? book.pages : book.pages + (book.pages % 2);   /* an empty last page keeps the spreads even */
     var imgs = [];
     function pad3(n) { return (n < 10 ? '00' : n < 100 ? '0' : '') + n; }
     for (var i = 1; i <= total; i++) {
@@ -29,10 +30,11 @@ $(window).ready(function () {
 
     var optimalWidth = $('.phen-book-container').width();
     var windowHeight = $(window).height() - $('.topmenu').height() - $('.footer').height() - 100;
-    var optimalHeight = Math.round((optimalWidth / 2) / book.ratio);
+    var across = single ? 1 : 2;
+    var optimalHeight = Math.round((optimalWidth / across) / book.ratio);
     if (windowHeight < optimalHeight) {
         optimalHeight = windowHeight;
-        optimalWidth = Math.round(optimalHeight * 2 * book.ratio);
+        optimalWidth = Math.round(optimalHeight * across * book.ratio);
     }
     $book.css('width', optimalWidth + 'px').css('height', optimalHeight + 'px');
 
@@ -41,13 +43,13 @@ $(window).ready(function () {
     var saved = /^#p=(\d+)$/.exec(window.location.hash);
     if (saved) {
         var sp = parseInt(saved[1], 10);
-        if (sp >= 2 && sp % 2 === 0 && sp <= total) { startPage = sp; }
+        if (sp >= 2 && (single || sp % 2 === 0) && sp <= total) { startPage = sp; }
     }
     loadAround(startPage);
 
     $book.turn({
         page: startPage,
-        display: 'double',
+        display: single ? 'single' : 'double',
         acceleration: false,
         gradients: !$.isTouch,
         elevation: 50,
