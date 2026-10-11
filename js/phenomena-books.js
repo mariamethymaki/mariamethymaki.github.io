@@ -18,7 +18,6 @@ window.PHENOMENA_BOOKS = [
     {slug: "nyremberg", pages: 764, ratio: 0.6929, thumbs: 16},
     {slug: "alphabets", pages: 35, ratio: 1.4143, thumbs: 15},
     {slug: "psalterium", pages: 555, ratio: 0.7957, thumbs: 16},
-    {slug: "revelation", pages: 180, ratio: 0.6892, thumbs: 16},
     {slug: "voynich", pages: 242, ratio: 0.722, thumbs: 16},
     {slug: "wavescript", pages: 88, ratio: 1.9906, thumbs: 16}
 ];
