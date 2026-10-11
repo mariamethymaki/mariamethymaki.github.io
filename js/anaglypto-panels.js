@@ -12,9 +12,9 @@
 
     var S = D.strings;
     var HINT = {
-        en: 'Move over the work: the panels carry texts that appear in Logos. Click a panel to keep it.',
-        el: 'Περνώντας πάνω από το έργο βλέπεις ποια κείμενα του Logos είναι γραμμένα σε κάθε πάνελ. Κάνε κλικ σε ένα πάνελ για να μείνει.',
-        it: 'Passa sull’opera: i pannelli portano testi che compaiono in Logos. Clicca su un pannello per fissarlo.'
+        en: 'Move over the work: the panels carry texts that appear in lOgos. Click a panel to keep it.',
+        el: 'Περνώντας πάνω από το έργο βλέπεις ποια κείμενα του λΟγου είναι γραμμένα σε κάθε πάνελ. Κάνε κλικ σε ένα πάνελ για να μείνει.',
+        it: 'Passa sull’opera: i pannelli portano testi che compaiono in lOgos. Clicca su un pannello per fissarlo.'
     }[D.lang];
     var OPEN = { en: 'Logos, pp.', el: 'Logos, σελ.', it: 'Logos, pp.' }[D.lang];
 
