@@ -12,7 +12,8 @@
 body {
     /*padding-top: 80px;*/
     /*padding-bottom: 40px;*/
-    font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
+    font-weight: 300;
     background:transparent;
     color: #333333;
     font-size: 13px;
@@ -214,7 +215,7 @@ video{
 }
 
 .first-nominedei-page {
-    font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
     font-size: 12px;
     line-height: 18px;
     text-align: left;
@@ -249,7 +250,7 @@ video{
 }
 
 .nominedei-description {
-    font-family: methimaki;
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 15px;
     text-align: justify;
