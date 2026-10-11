@@ -16,8 +16,6 @@ window.PHENOMENA_BOOKS = [
     {slug: "megafestos", pages: 451, ratio: 0.6572, thumbs: 19},
     {slug: "numeri", pages: 383, ratio: 0.7071, thumbs: 22},
     {slug: "nyremberg", pages: 764, ratio: 0.6929, thumbs: 24},
-    {slug: "alphabets", pages: 35, ratio: 1.4143, thumbs: 6},
     {slug: "psalterium", pages: 555, ratio: 0.7957, thumbs: 12},
-    {slug: "voynich", pages: 242, ratio: 0.722, thumbs: 22},
-    {slug: "wavescript", pages: 88, ratio: 1.9906, thumbs: 17}
+    {slug: "voynich", pages: 242, ratio: 0.722, thumbs: 22}
 ];
