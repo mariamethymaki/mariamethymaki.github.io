@@ -49,9 +49,9 @@
     ];
 
     var S = {
-        en: { panel: 'Panel', panels: 'panels', written: 'Written on Anaglypto', logos: 'Logos, pp.' },
-        el: { panel: 'Πάνελ', panels: 'πάνελ', written: 'Γραμμένο στο Anaglypto', logos: 'Logos, σελ.' },
-        it: { panel: 'Pannello', panels: 'pannelli', written: 'Scritto su Anaglypto', logos: 'Logos, pp.' }
+        en: { panel: 'Panel', panels: 'panels', written: 'Written on anAglypto', logos: 'lOgos, pp.' },
+        el: { panel: 'Πάνελ', panels: 'πάνελ', written: 'Γραμμένο στο ανΑγλυπτο', logos: 'λΟγος, σελ.' },
+        it: { panel: 'Pannello', panels: 'pannelli', written: 'Scritto su anAglypto', logos: 'lOgos, pp.' }
     }[lang];
 
     var bySpread = {}, byId = {};

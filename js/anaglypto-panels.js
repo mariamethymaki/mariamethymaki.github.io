@@ -16,7 +16,7 @@
         el: 'Περνώντας πάνω από το έργο βλέπεις ποια κείμενα του λΟγου είναι γραμμένα σε κάθε πάνελ. Κάνε κλικ σε ένα πάνελ για να μείνει.',
         it: 'Passa sull’opera: i pannelli portano testi che compaiono in lOgos. Clicca su un pannello per fissarlo.'
     }[D.lang];
-    var OPEN = { en: 'Logos, pp.', el: 'Logos, σελ.', it: 'Logos, pp.' }[D.lang];
+    var OPEN = { en: 'lOgos, pp.', el: 'λΟγος, σελ.', it: 'lOgos, pp.' }[D.lang];
 
     var highlights = D.panels.map(function (p) {
         var el = document.createElement('div');
