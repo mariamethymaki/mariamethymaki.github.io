@@ -17,5 +17,6 @@ window.PHENOMENA_BOOKS = [
     {slug: "numeri", pages: 383, ratio: 0.7071, thumbs: 22},
     {slug: "nyremberg", pages: 764, ratio: 0.6929, thumbs: 24},
     {slug: "psalterium", pages: 555, ratio: 0.7957, thumbs: 12},
-    {slug: "voynich", pages: 242, ratio: 0.722, thumbs: 22}
+    {slug: "voynich", pages: 242, ratio: 0.722, thumbs: 22},
+    {slug: "keimena", pages: 10, ratio: 0.6236, thumbs: 10}
 ];
