@@ -1005,3 +1005,53 @@ height: 300px;
     width: 100%;
     object-fit: contain;
 }
+
+/*facades of saturated phenomena: grid of 20 books with random slideshow, and the book viewer*/
+.phen-grid{
+    --h: clamp(120px, 24vh, 300px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 20px;
+}
+.phen-cell{
+    display: block;
+    position: relative;
+    height: var(--h);
+    aspect-ratio: var(--r);
+    background-color: #eee;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.18);
+    overflow: hidden;
+}
+.phen-cell img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+.phen-cell img.on{
+    opacity: 1;
+}
+@media (prefers-reduced-motion: reduce){
+    .phen-cell img{ transition: none; }
+}
+#phenbook{
+    width:100%;
+    height:1410px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+}
+#phenbook .turn-page{
+    background-color:#ddd;
+    background-size:100% 100%;
+}
+@media (min-width: 992px){
+    .phen-book-container{
+        float:right
+    }
+}
