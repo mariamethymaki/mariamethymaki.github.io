@@ -1056,3 +1056,9 @@ height: 300px;
         float:right
     }
 }
+
+/*ideal reader wanted: the three books as three slideshows*/
+.ir-grid{
+    --h: clamp(220px, 62vh, 640px);
+    gap: 28px;
+}
