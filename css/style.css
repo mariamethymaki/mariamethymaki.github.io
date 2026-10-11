@@ -130,6 +130,19 @@ video{
     font-size:13px;
 }
 
+/* start the side menu level with the top of the work shown next to it (that column has 1rem top padding) */
+@media (min-width: 768px) {
+    .row:has(> .pt-md-3) .nav-sidemenu {
+        padding-top: 9px;
+    }
+}
+
+@media (min-width: 992px) {
+    .row:has(> .pt-lg-3) .nav-sidemenu {
+        padding-top: 9px;
+    }
+}
+
 .nav-sidemenu .nav > .active > a,
 .nav-sidemenu .nav > .active > a:hover,
 .nav-sidemenu .nav > .active > a:focus {
