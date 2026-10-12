@@ -1082,3 +1082,13 @@ height: 300px;
     justify-content: center;
     align-items: center;
 }
+
+
+/* In nomine Dei: the poems under "Pages:" in the size of the "Pages:" line, words run together */
+.page-text{
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+}

@@ -1,3 +1,26 @@
+/* Style of the poems: no spaces between the words, and the stressed vowel (both letters of a stressed diphthong)
+   written in capitals instead of the accent: "τραβάω γραμμές" -> "τραβΑωγραμμΕς". Done when the text is shown. */
+var STRESSED = { 'ά': 'Α', 'έ': 'Ε', 'ή': 'Η', 'ί': 'Ι', 'ό': 'Ο', 'ύ': 'Υ', 'ώ': 'Ω', 'ΐ': 'Ι', 'ΰ': 'Υ' };
+function stressCaps(word) {
+    /* stressed diphthongs: αί εί οί υί αύ εύ ηύ ού -> both letters */
+    word = word.replace(/([αεουη])([ίύ])/g, function (m, a, b) {
+        var ok = (b === 'ί' && 'αεου'.indexOf(a) >= 0) || (b === 'ύ' && 'αεηο'.indexOf(a) >= 0);
+        return ok ? a.toUpperCase() + STRESSED[b] : m;
+    });
+    return word.replace(/[άέήίόύώΐΰ]/g, function (c) { return STRESSED[c]; });
+}
+function poemHtml(html) {
+    var box = $('<div></div>').html(html);
+    (function walk(node) {
+        node.contents().each(function () {
+            if (this.nodeType === 3) {
+                this.nodeValue = this.nodeValue.split(/\s+/).filter(Boolean).map(stressCaps).join('');
+            } else if (this.nodeType === 1) { walk($(this)); }
+        });
+    })(box);
+    return box.html();
+}
+
 $(window).ready(function() {
     optimalWidth = $('.nominedei-container').width();
     windowHeight = $(window).height() - $('.topmenu').height() - $('.footer').height() - 100;
@@ -48,7 +71,7 @@ $(window).ready(function() {
                 if (currentView[0] != 0 && currentView[1] != 0)
                     description += '<div class="pages-line">Pages: ' + (currentView[0]-1) + '-' + (currentView[1]-1) + '</div><br/>';
                 if ($(pageId).length)
-                    description += $(pageId).html();
+                    description += (currentView[0] != 0) ? '<div class="page-text">' + poemHtml($(pageId).html()) + '</div>' : $(pageId).html();
                 if (description.replace(/\s+/g, '') != '')
                     description = '<div class="cover-text">' + description.replace(/(\s|<br\s*\/?>)+$/gi, '') + '</div>';
                 $('#workdetails').html(description);
