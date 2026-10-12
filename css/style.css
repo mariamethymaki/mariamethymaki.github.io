@@ -225,9 +225,9 @@ video{
     text-align: right;
 }
 
-/* the methimaki font has no usable digits (its "2" is blank): use the cover font */
+/* the "Pages: a-b" line and the date-code lines of CasaMIaS: same font as the rest of the site (Montserrat) */
 .pages-line {
-    font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
     font-size: 12px;
     line-height: 18px;
     text-align: left;
