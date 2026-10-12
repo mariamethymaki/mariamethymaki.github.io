@@ -1066,6 +1066,6 @@ height: 300px;
 /* the two works made of several books are a little larger in the side menu */
 .nav-sidemenu .nav > li[data-pages^="idealreader"] > a,
 .nav-sidemenu .nav > li[data-pages^="phenomena"] > a {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 19px;
 }
