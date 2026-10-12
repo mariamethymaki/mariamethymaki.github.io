@@ -1059,8 +1059,16 @@ height: 300px;
 
 /*ideal reader wanted: the three books as three slideshows*/
 .ir-grid{
-    --h: clamp(220px, 62vh, 640px);
+    /* as tall as the book viewers (the tallest book), but never wider than the page: the three together are 1.46 x that height wide */
+    --h: clamp(220px, min(100vh - 155px, (100vw - 320px) / 1.5), 1400px);
     gap: 28px;
+}
+@media (max-width: 767px){
+    .ir-grid{
+        --h: calc((100vw - 60px) / 1.5);
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
 }
 
 /* the two works made of several books are a little larger in the side menu */
