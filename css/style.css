@@ -1075,8 +1075,8 @@ height: 300px;
 .nav-sidemenu .nav > li[data-pages^="idealreader"] > a,
 .nav-sidemenu .nav > li[data-pages^="phenomena"] > a,
 .nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a {
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 13px;
+    line-height: 18px;
 }
 .ir-grid{
     justify-content: center;
