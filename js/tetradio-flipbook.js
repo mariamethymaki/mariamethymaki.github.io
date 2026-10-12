@@ -10,12 +10,12 @@ $(window).ready(function() {
         var left = (n === 1) ? 0 : (n % 2 === 0 ? n : n - 1);
         return [left, left === 0 ? 1 : (left + 1 <= total ? left + 1 : 0)];
     }
-    optimalHeight = Math.round((optimalWidth/across)*550/380);
+    optimalHeight = Math.round((optimalWidth/across)*1418/1000);
 
     if (windowHeight < optimalHeight)
     {
         optimalHeight = windowHeight;
-        optimalWidth = Math.round((optimalHeight*380*across/550));
+        optimalWidth = Math.round((optimalHeight*1000*across/1418));
     }
     $('#tetradio').css("width", optimalWidth+"px").css("height", optimalHeight+"px");
     if (!narrow) { $('#workdetails').css("height", (optimalHeight) + "px"); }

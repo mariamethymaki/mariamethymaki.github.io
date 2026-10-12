@@ -10,8 +10,7 @@
     var labels = { '': ['In nomine Dei', 'Logos', 'CasaMIaS'], '/el': ['Για όνομα του Θεού', 'Λόγος', 'CasaMIaS'], '/it': ['In nomine Dei', 'Logos', 'CasaMIaS'] }[lang];
     var books = [
         { key: 'nominedei', ratio: 1200 / 1938, href: '/nominedei.html' },
-        /* the Logos has two extra pages (57, 58): from page 57 on, the Logos page that goes with page p is p + 2 */
-        { key: 'logos', ratio: 380 / 550, href: '/logos.html', own: function (p) { return p <= 56 ? p : p + 2; } },
+        { key: 'logos', ratio: 1000 / 1418, href: '/logos.html' },
         { key: 'casamias', ratio: 1000 / 1410, href: '/casamias.html' }
     ];
     var base = '/media/images/idealreader/';
