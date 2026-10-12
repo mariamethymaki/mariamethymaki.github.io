@@ -1072,4 +1072,5 @@ height: 300px;
 }
 .ir-grid{
     justify-content: center;
+    align-items: center;
 }

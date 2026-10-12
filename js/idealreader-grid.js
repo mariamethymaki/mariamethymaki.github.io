@@ -7,11 +7,16 @@
     if (!grid || !pages.length) { return; }
     var parts = window.location.pathname.split('/').filter(Boolean);
     var lang = (parts[0] === 'el' || parts[0] === 'it') ? '/' + parts[0] : '';
-    var labels = { '': ['In nomine Dei', 'Logos', 'CasaMIaS'], '/el': ['Για όνομα του Θεού', 'Λόγος', 'CasaMIaS'], '/it': ['In nomine Dei', 'Logos', 'CasaMIaS'] }[lang];
+    var labels = {
+        '': { logos: 'Logos', casamias: 'CasaMIaS', nominedei: 'In nomine Dei' },
+        '/el': { logos: 'Λόγος', casamias: 'CasaMIaS', nominedei: 'Για όνομα του Θεού' },
+        '/it': { logos: 'Logos', casamias: 'CasaMIaS', nominedei: 'In nomine Dei' }
+    }[lang];
+    /* order: Logos / CasaMIaS / In nomine Dei; scale = real height of the book (30, 21, 43 cm) relative to the tallest; centred on each other */
     var books = [
-        { key: 'nominedei', ratio: 1200 / 1938, href: '/nominedei.html' },
-        { key: 'logos', ratio: 1000 / 1418, href: '/logos.html' },
-        { key: 'casamias', ratio: 1000 / 1410, href: '/casamias.html' }
+        { key: 'logos', ratio: 1000 / 1418, href: '/logos.html', scale: 30 / 43 },
+        { key: 'casamias', ratio: 1000 / 1410, href: '/casamias.html', scale: 21 / 43 },
+        { key: 'nominedei', ratio: 1200 / 1938, href: '/nominedei.html', scale: 1 }
     ];
     var base = '/media/images/idealreader/';
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -25,7 +30,8 @@
         var a = document.createElement('a');
         a.className = 'phen-cell';
         a.href = lang + b.href;
-        a.setAttribute('aria-label', labels[i]);
+        a.setAttribute('aria-label', labels[b.key]);
+        a.style.height = 'calc(var(--h) * ' + b.scale + ')';
         a.style.setProperty('--r', b.ratio);
         a.innerHTML = '<img alt=""><img alt="">';
         grid.appendChild(a);
