@@ -1092,3 +1092,9 @@ height: 300px;
     overflow-wrap: anywhere;
     word-break: break-all;
 }
+
+/* Logos, Greek page: the texts are running text, aligned left and right */
+html[lang="el"] #workdetails .cover-text,
+html[lang="el"] .tetradio-description .cover-text {
+    text-align: justify;
+}
