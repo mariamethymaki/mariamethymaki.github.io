@@ -1134,4 +1134,4 @@ html[lang="el"] .tetradio-description .cover-text {
     }
     .ir-caption{ font-size: 10px; line-height: 14px; }
 }
-.ir-caption .ir-last{ white-space: nowrap; }
+.ir-caption .ir-line{ display: block; white-space: nowrap; }
