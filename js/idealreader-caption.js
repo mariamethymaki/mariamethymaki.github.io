@@ -2,7 +2,7 @@
    The text is split into two lines of about the same length (at the space that balances them best),
    and each line is spaced out letter by letter to the full width, so both lines have the same length.
    If the two halves do not fit (narrow screens), the text stays as normal justified text.
-   Each title (with its year) is a link to the work; the titles are separated by "-". */
+   Each title (with its year) is a link to the work; the titles are separated by " - ". */
 (function () {
     var cap = document.querySelector('.ir-caption');
     if (!cap) { return; }
@@ -12,9 +12,9 @@
     var pages = ['logos.html', 'casamias.html', 'nominedei.html'];
     /* the three titles: [start, end) in the text and the page of the work */
     var segs = [], from = 0;
-    full.split('-').forEach(function (s, k) {
+    full.split(' - ').forEach(function (s, k) {
         segs.push({ a: from, b: from + s.length, href: lang + '/' + pages[k] });
-        from += s.length + 1;
+        from += s.length + 3;
     });
 
     /* fill el with the text from start to end, the parts of titles as links */
@@ -42,6 +42,7 @@
         var W = cap.getBoundingClientRect().width;
         var best = -1, bestDiff = Infinity, w1, w2;
         for (var i = full.indexOf(' '); i !== -1; i = full.indexOf(' ', i + 1)) {
+            if (full.charAt(i - 1) === '-' || full.charAt(i + 1) === '-') { continue; } /* never break next to the dash */
             var a = width(full.slice(0, i)), b = width(full.slice(i + 1));
             if (Math.abs(a - b) < bestDiff) { bestDiff = Math.abs(a - b); best = i; w1 = a; w2 = b; }
         }
