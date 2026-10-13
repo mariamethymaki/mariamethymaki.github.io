@@ -1099,31 +1099,38 @@ html[lang="el"] .tetradio-description .cover-text {
     text-align: justify;
 }
 
-/* ideal reader wanted: one line under the three books with the name and year of each work,
-   from the bottom-left corner of the first book to the right edge of the last one */
+/* ideal reader wanted: one line with the name and year of each work, just under lOgos
+   (the lower of the two smaller books), from its bottom-left corner to the start of in nOmine DEI */
 .ir-wrap{
+    --h: clamp(220px, min(100vh - 155px, (100vw - 320px) / 1.5), 1400px);
+    --gap: 28px;
+    position: relative;
     width: fit-content;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 .ir-wrap .ir-grid{
-    padding-bottom: 8px;
+    --h: inherit;
+    gap: var(--gap);
 }
 .ir-caption{
+    position: absolute;
+    left: 0;
+    /* lOgos is 30/43 of the tallest book and centred on it: its bottom is at h * (1/2 + 15/43) */
+    top: calc(var(--h) * (0.5 + 15 / 43) + 8px);
+    /* in nOmine DEI is the last book, h * 1200/1938 wide */
+    right: calc(var(--h) * 1200 / 1938 + var(--gap));
     display: flex;
     justify-content: space-between;
-    gap: 28px;
+    gap: 12px;
     font-size: 12px;
     line-height: 18px;
-    padding-bottom: 20px;
-}
-@media (min-width: 768px){
-    /* leave room for the caption line so that the books and the line still fit the screen */
-    .ir-wrap .ir-grid{
-        --h: clamp(220px, min(100vh - 195px, (100vw - 320px) / 1.5), 1400px);
-    }
 }
 @media (max-width: 767px){
-    .ir-caption{ gap: 12px; font-size: 11px; }
+    .ir-wrap{
+        --h: calc((100vw - 60px) / 1.5);
+        --gap: 12px;
+    }
+    .ir-caption{ gap: 6px; font-size: 10px; line-height: 14px; }
 }
