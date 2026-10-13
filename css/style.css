@@ -1135,3 +1135,5 @@ html[lang="el"] .tetradio-description .cover-text {
     .ir-caption{ font-size: 10px; line-height: 14px; }
 }
 .ir-caption .ir-line{ display: block; white-space: nowrap; }
+.ir-caption a{ color: inherit; text-decoration: none; }
+.ir-caption a:hover{ text-decoration: underline; }
