@@ -1123,6 +1123,7 @@ html[lang="el"] .tetradio-description .cover-text {
     /* in nOmine DEI is the last book, h * 1200/1938 wide */
     right: calc(var(--h) * 1200 / 1938 + var(--gap));
     text-align: justify;
+    text-align-last: left;
     font-size: 12px;
     line-height: 18px;
 }
@@ -1133,3 +1134,4 @@ html[lang="el"] .tetradio-description .cover-text {
     }
     .ir-caption{ font-size: 10px; line-height: 14px; }
 }
+.ir-caption .ir-last{ white-space: nowrap; }
