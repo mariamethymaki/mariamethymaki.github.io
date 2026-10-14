@@ -8,9 +8,9 @@
     var parts = window.location.pathname.split('/').filter(Boolean);
     var lang = (parts[0] === 'el' || parts[0] === 'it') ? '/' + parts[0] : '';
     var labels = {
-        '': { logos: 'Logos', casamias: 'CasaMIaS', nominedei: 'In nomine Dei' },
-        '/el': { logos: 'Λόγος', casamias: 'CasaMIaS', nominedei: 'Για όνομα του Θεού' },
-        '/it': { logos: 'Logos', casamias: 'CasaMIaS', nominedei: 'In nomine Dei' }
+        '': { logos: 'Logos', casamias: 'cAsa mIa s', nominedei: 'In nomine Dei' },
+        '/el': { logos: 'Λόγος', casamias: 'cAsa mIa s', nominedei: 'Για όνομα του Θεού' },
+        '/it': { logos: 'Logos', casamias: 'cAsa mIa s', nominedei: 'In nomine Dei' }
     }[lang];
     /* order: Logos / CasaMIaS / In nomine Dei; scale = real height of the book (30, 21, 43 cm) relative to the tallest; centred on each other */
     var books = [
