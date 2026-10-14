@@ -1075,8 +1075,13 @@ height: 300px;
 .nav-sidemenu .nav > li[data-pages^="idealreader"] > a,
 .nav-sidemenu .nav > li[data-pages^="phenomena"] > a,
 .nav-sidemenu .nav > li.menu-camara > a {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 18px;
+}
+.nav-sidemenu .nav > li[data-pages="logos.html"] > a,
+.nav-sidemenu .nav > li[data-pages="casamias.html"] > a,
+.nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a {
+    font-size: 13px;
 }
 .ir-grid{
     justify-content: center;
@@ -1156,6 +1161,11 @@ html[lang="el"] .tetradio-description .cover-text {
     .nav-sidemenu .nav > li[data-pages="nominedei.html"] > a,
     .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
     .nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a {
+        padding-bottom: 0;
+    }
+    /* the part titles (idEal wItness wAnted, cAmara) a little closer to the works they contain */
+    .nav-sidemenu .nav > li[data-pages="idealreader.html"] > a,
+    .nav-sidemenu .nav > li.menu-camara > a {
         padding-bottom: 0;
     }
     .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
