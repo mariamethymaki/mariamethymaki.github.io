@@ -1149,3 +1149,18 @@ html[lang="el"] .tetradio-description .cover-text {
 .fatan-box img.on{ opacity: 1; }
 .fatan-caption{ margin-top: 6px; font-size: 12px; line-height: 18px; white-space: nowrap; }
 @media (max-width: 767px){ .fatan-caption{ font-size: 10px; line-height: 14px; } }
+
+/* side menu: works that belong together sit closer
+   (in nOmine DEI / lOgos / CasaMIaS, and anAglypto / for All that Are not) */
+@media (min-width: 768px) {
+    .nav-sidemenu .nav > li[data-pages="nominedei.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a {
+        padding-bottom: 0;
+    }
+    .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="casamias.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="forallthatarenot.html"] > a {
+        padding-top: 4px;
+    }
+}
