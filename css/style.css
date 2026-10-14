@@ -1078,9 +1078,11 @@ height: 300px;
     font-size: 14px;
     line-height: 18px;
 }
+.nav-sidemenu .nav > li[data-pages="nominedei.html"] > a,
 .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
 .nav-sidemenu .nav > li[data-pages="casamias.html"] > a,
-.nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a {
+.nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a,
+.nav-sidemenu .nav > li[data-pages="forallthatarenot.html"] > a {
     font-size: 13px;
 }
 .ir-grid{
