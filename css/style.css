@@ -1242,3 +1242,38 @@ html[lang="el"] .tetradio-description .cover-text {
 @media (prefers-reduced-motion: reduce){
     .amen-show img{ transition: none; }
 }
+
+/* ideal reader wanted: the text about the book in the space above lOgos and cAsa mIa s.
+   The books stand on a common line, the titles line under them; the text fills the rest up to the top of
+   in nOmine DEI, so that together they form a rectangle as tall as in nOmine DEI (size set by js/idealreader-text.js) */
+.ir-wrap{
+    --cap: 44px;
+}
+.ir-wrap .ir-grid{
+    align-items: flex-end;
+}
+.ir-wrap .ir-grid .phen-cell:not(:last-child){
+    margin-bottom: var(--cap);
+}
+.ir-text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: calc(var(--h) * 1200 / 1938 + var(--gap));
+    /* lOgos (30/43 of the height) and the titles line take the bottom; the text the rest, with a small gap */
+    height: calc(var(--h) * 13 / 43 - var(--cap) - 14px);
+    overflow: hidden;
+    text-align: justify;
+    hyphens: manual;
+}
+.ir-text p{
+    margin: 0 0 0.5em;
+}
+.ir-text p:last-child{
+    margin-bottom: 0;
+}
+@media (max-width: 767px){
+    .ir-text{ position: static; height: auto; overflow: visible; padding-top: 16px; }
+    .ir-wrap .ir-grid .phen-cell:not(:last-child){ margin-bottom: 0; }
+}
+.ir-text.ir-text-below{ position: static; height: auto; overflow: visible; padding-top: 16px; margin-top: var(--cap); }
