@@ -1305,9 +1305,9 @@ html[lang="el"] .tetradio-description .cover-text {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: 8px;
-    font-size: 13px;
-    line-height: 18px;
+    padding-top: 6px;
+    font-size: 12px;
+    line-height: 15px;
 }
 .amen-col a{
     color: inherit;
@@ -1317,17 +1317,18 @@ html[lang="el"] .tetradio-description .cover-text {
     text-decoration: underline;
 }
 .amen-col-part{
-    font-size: 11px;
-    line-height: 16px;
-    margin-bottom: 4px;
+    font-size: 10px;
+    line-height: 13px;
+    margin-bottom: 2px;
 }
 .amen-col-work{
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 14px;
 }
 /* (τα μερικΑ): not a link, in the size of the part label */
 .amen-col-sub{
-    font-size: 11px;
-    line-height: 16px;
+    font-size: 10px;
+    line-height: 13px;
 }
 @media (max-width: 767px){
     .amen-opsi{ flex-basis: 100%; width: 100%; }
