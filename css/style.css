@@ -1316,10 +1316,12 @@ html[lang="el"] .tetradio-description .cover-text {
 .amen-col a:hover{
     text-decoration: underline;
 }
+.amen-col-head{
+    margin-bottom: 2px;
+}
+/* the part, on the same line as the name of the work */
 .amen-col-part{
     font-size: 10px;
-    line-height: 13px;
-    margin-bottom: 2px;
 }
 .amen-col-work{
     font-size: 11px;
@@ -1333,6 +1335,7 @@ html[lang="el"] .tetradio-description .cover-text {
 @media (max-width: 767px){
     .amen-opsi{ flex-basis: 100%; width: 100%; }
     .amen-col{ font-size: 10px; line-height: 13px; }
-    .amen-col-part, .amen-col-sub{ font-size: 9px; line-height: 12px; }
+    .amen-col-part{ font-size: 9px; }
+    .amen-col-sub{ font-size: 9px; line-height: 12px; }
     .amen-col-work{ font-size: 10px; }
 }
