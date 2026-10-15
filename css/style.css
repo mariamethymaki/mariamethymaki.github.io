@@ -1344,7 +1344,7 @@ html[lang="el"] .tetradio-description .cover-text {
 .amen-theory{
     flex: 0 0 calc(var(--pw) + 40px + var(--tw, var(--pw)));
     width: calc(var(--pw) + 40px + var(--tw, var(--pw)));
-    margin-top: 26px;
+    margin-top: 6px;
     padding-bottom: 20px;
 }
 .amen-theory-title{
