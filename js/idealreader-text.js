@@ -11,7 +11,8 @@
     var PAD = 10, MIN = 8, MAX = 16;
 
     /* the text as paragraphs of words (a word may carry markup such as <i>book</i>) */
-    var paras = [].map.call(src.querySelectorAll('p'), function (p) { return p.innerHTML.trim().split(/\s+/); });
+    /* one continuous text, without paragraphs (so that the type can be a little larger) */
+    var paras = [[].map.call(src.querySelectorAll('p'), function (p) { return p.innerHTML.trim(); }).join(' ').split(/\s+/)];
 
     var boxes = [1, 2, 3, 4].map(function (n) {
         var b = document.createElement('div');
