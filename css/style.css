@@ -1339,3 +1339,77 @@ html[lang="el"] .tetradio-description .cover-text {
     .amen-col-sub{ font-size: 9px; line-height: 12px; }
     .amen-col-work{ font-size: 10px; }
 }
+
+/* amen: the theoretical dimension of the artistic practice, under the elevation; three chapters that open on a click */
+.amen-theory{
+    flex: 0 0 calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    width: calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    margin-top: 26px;
+    padding-bottom: 20px;
+}
+.amen-theory-title{
+    white-space: pre-wrap;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 14px;
+}
+.amen-chapter{
+    border-top: 1px solid #ddd;
+}
+.amen-chapter:last-child{
+    border-bottom: 1px solid #ddd;
+}
+.amen-chapter summary{
+    cursor: pointer;
+    padding: 9px 0;
+    font-size: 14px;
+    line-height: 20px;
+    list-style: none;
+}
+.amen-chapter summary::-webkit-details-marker{
+    display: none;
+}
+.amen-chapter summary::before{
+    content: "+";
+    display: inline-block;
+    width: 18px;
+}
+.amen-chapter[open] summary::before{
+    content: "−";
+}
+.amen-chapter summary:hover{
+    text-decoration: underline;
+}
+.amen-chapter-body{
+    text-align: justify;
+    hyphens: auto;
+    padding: 2px 0 14px 18px;
+}
+.amen-chapter-body p{
+    margin-bottom: 10px;
+}
+.amen-chapter-body a{
+    color: inherit;
+}
+.amen-notes{
+    font-size: 11px;
+    line-height: 15px;
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    margin-top: 14px;
+    padding-left: 18px;
+    overflow-wrap: anywhere;
+}
+.amen-notes li{
+    margin-bottom: 6px;
+}
+.fn-ref, .fn-back{
+    text-decoration: none;
+}
+@media (max-width: 767px){
+    .amen-theory{ flex-basis: 100%; width: 100%; }
+    .amen-theory-title{ font-size: 12px; line-height: 18px; }
+    .amen-chapter-body{ padding-left: 0; }
+}
