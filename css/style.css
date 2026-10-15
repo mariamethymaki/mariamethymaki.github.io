@@ -1078,6 +1078,12 @@ height: 300px;
     font-size: 14px;
     line-height: 18px;
 }
+/* the three part titles (idEal wItness wAnted, saturAted phenOmena facAdes, cAmara) slightly heavier than the other entries (400 instead of 300); the open page stays bold */
+.nav-sidemenu .nav > li[data-pages^="idealreader"]:not(.active) > a,
+.nav-sidemenu .nav > li[data-pages^="phenomena"]:not(.active) > a,
+.nav-sidemenu .nav > li.menu-camara:not(.active) > a {
+    font-weight: 400;
+}
 .nav-sidemenu .nav > li[data-pages="nominedei.html"] > a,
 .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
 .nav-sidemenu .nav > li[data-pages="casamias.html"] > a,
