@@ -1355,13 +1355,9 @@ html[lang="el"] .tetradio-description .cover-text {
     /* spread over the whole width */
     text-align: justify;
     text-align-last: justify;
-    margin-bottom: 14px;
-}
-.amen-chapter{
-    border-top: 1px solid #ddd;
-}
-.amen-chapter:last-child{
-    border-bottom: 1px solid #ddd;
+    background-color: #eeeeee;
+    padding: 8px 14px;
+    margin-bottom: 10px;
 }
 .amen-chapter summary{
     cursor: pointer;
