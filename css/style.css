@@ -1269,18 +1269,20 @@ html[lang="el"] .tetradio-description .cover-text {
 }
 
 /* amen: under the slideshow and the text, the elevation of the installation, as wide as the two together;
-   each of the three parts is a link to its work, with its name under it */
+   each of the three parts is a link to its work; under it the name of the work, the part, and the works it contains */
 .amen-wrap{
     flex-wrap: wrap;
+    row-gap: 14px;
 }
 .amen-opsi{
-    position: relative;
     flex: 0 0 calc(var(--pw) + 40px + var(--tw, var(--pw)));
     width: calc(var(--pw) + 40px + var(--tw, var(--pw)));
-    padding-bottom: 46px;
-    margin-top: 20px;
+    padding-bottom: 10px;
 }
-.amen-opsi img{
+.amen-opsi-pic{
+    position: relative;
+}
+.amen-opsi-pic img{
     display: block;
     width: 100%;
     height: auto;
@@ -1288,47 +1290,43 @@ html[lang="el"] .tetradio-description .cover-text {
 .amen-zone{
     position: absolute;
     top: 0;
-    /* the picture and the name of the work under it; the part ((το Ενα μΕρος) etc.) below the name is not a link */
-    bottom: 22px;
-    color: inherit;
-    text-decoration: none;
-}
-.amen-zone::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 24px;
+    bottom: 0;
     background: rgba(255, 255, 255, 0);
     transition: background 0.3s ease;
 }
-.amen-zone:hover::before{
+.amen-zone:hover{
     background: rgba(255, 255, 255, 0.35);
 }
-.amen-zone-label{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.amen-opsi-cols{
+    display: flex;
+}
+.amen-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding-top: 8px;
     font-size: 13px;
     line-height: 18px;
 }
-.amen-zone-part{
-    position: absolute;
-    bottom: 4px;
-    text-align: center;
-    font-size: 11px;
-    line-height: 16px;
+.amen-col a{
+    color: inherit;
+    text-decoration: none;
 }
-.amen-zone:hover .amen-zone-label{
+.amen-col a:hover{
     text-decoration: underline;
 }
+.amen-col-part{
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 4px;
+}
+.amen-col-work{
+    font-size: 12px;
+}
 @media (max-width: 767px){
-    .amen-opsi{ flex-basis: 100%; width: 100%; padding-bottom: 56px; }
-    .amen-zone{ bottom: 22px; }
-    .amen-zone::before{ bottom: 30px; }
-    .amen-zone-label{ font-size: 10px; line-height: 13px; }
-    .amen-zone-part{ font-size: 9px; }
+    .amen-opsi{ flex-basis: 100%; width: 100%; }
+    .amen-col{ font-size: 10px; line-height: 13px; }
+    .amen-col-part{ font-size: 9px; line-height: 12px; }
+    .amen-col-work{ font-size: 10px; }
 }
