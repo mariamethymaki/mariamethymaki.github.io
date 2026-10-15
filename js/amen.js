@@ -44,8 +44,8 @@
     function step() {
         var b, i;
         do {
-            /* half of the time one of the four handmade notebooks, half of the time one of the phenOmena books */
-            var hand = Math.random() < 0.5 || books.length === HANDMADE;
+            /* two times out of three one of the four handmade notebooks, otherwise one of the phenOmena books */
+            var hand = Math.random() < 2 / 3 || books.length === HANDMADE;
             b = hand ? books[Math.floor(Math.random() * HANDMADE)]
                      : books[HANDMADE + Math.floor(Math.random() * (books.length - HANDMADE))];
             i = Math.floor(Math.random() * b.pages);
