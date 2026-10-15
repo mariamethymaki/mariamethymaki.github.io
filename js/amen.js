@@ -48,6 +48,7 @@
     function fitText(w, h) {
         if (!text) { return; }
         text.style.width = ''; text.style.flexBasis = ''; text.style.fontSize = ''; text.style.lineHeight = '';
+        wrap.style.removeProperty('--tw');
         if (!w) { return; }
         var fs = parseFloat(getComputedStyle(text).fontSize);
         function setW(x) { text.style.width = x + 'px'; text.style.flexBasis = x + 'px'; }
@@ -57,6 +58,7 @@
         var lo = Math.round(w * 0.4), hi = w;
         while (lo < hi) { var mid = (lo + hi) >> 1; setW(mid); if (text.scrollHeight <= h) { hi = mid; } else { lo = mid + 1; } }
         setW(lo);
+        wrap.style.setProperty('--tw', lo + 'px');   /* the elevation below is as wide as picture + text */
         /* then open the line spacing until the last line ends at the bottom of the picture */
         var lh = parseFloat(getComputedStyle(text).lineHeight);
         while (text.scrollHeight < h - 0.5 && lh < fs * 2) { lh += 0.05; text.style.lineHeight = lh + 'px'; if (text.scrollHeight > h) { lh -= 0.05; text.style.lineHeight = lh + 'px'; break; } }
