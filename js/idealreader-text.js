@@ -36,38 +36,55 @@
     }
 
     /* flow all the words through the four boxes at this size; true if everything fits */
-    function flow(size, lh) {
-        lh = lh || size * 1.4;
-        boxes.forEach(function (b) { b.innerHTML = ''; b.style.fontSize = size + 'px'; b.style.lineHeight = lh + 'px'; });
-        var bi = 0, box = boxes[0];
-        for (var pi = 0; pi < paras.length; pi++) {
-            var words = paras[pi], wi = 0;
-            while (wi < words.length) {
-                if (!box) { return false; }
-                var p = document.createElement('p'), kept = [];
-                if (wi > 0) { p.className = 'cont-from'; }
-                box.appendChild(p);
-                while (wi < words.length) {
-                    kept.push(words[wi]);
-                    p.innerHTML = kept.join(' ');
-                    if (box.scrollHeight > box.clientHeight + 0.5) {
-                        kept.pop();
-                        p.innerHTML = kept.join(' ');
-                        if (!kept.length) { box.removeChild(p); }
-                        else { p.classList.add('cont'); }      /* the paragraph goes on in the next box: justify its last line too */
-                        bi++; box = boxes[bi];
-                        break;
-                    }
-                    wi++;
-                }
-            }
-        }
-        return true;
+    var G = null;   /* the positions of the books, measured in layout() */
+
+    /* all the lines lie on one grid that starts at the top of in nOmine DEI and ends at the end of the titles line,
+       so the space between the lines is the same everywhere, also where the text goes on from one area to the next.
+       k = number of grid lines; each area takes whole lines */
+    function placeOnGrid(k) {
+        var lh = (G.bottom - G.top) / k;
+        function line(y, up) { var n = (y - G.top) / lh; return Math.max(0, Math.min(k, up ? Math.ceil(n - 0.001) : Math.floor(n + 0.001))); }
+        var n1 = line(G.L.t - PAD, false);          /* 1: above lOgos, across both books */
+        var n2 = line(G.C.t - PAD, false);          /* 2: above cAsa mIa s, right after 1 */
+        var n3 = line(G.C.b + PAD, true);           /* 3: below cAsa mIa s */
+        var n4 = Math.max(n3, line(G.L.b + PAD, true));   /* 4: below lOgos, to the end */
+        function y(n) { return G.top + n * lh; }
+        place(boxes[0], G.left, y(0), G.right, y(n1));
+        place(boxes[1], G.C.l, y(n1), G.right, y(Math.max(n1, n2)));
+        place(boxes[2], G.C.l, y(n3), G.right, y(n4));
+        place(boxes[3], G.left, y(n4), G.right, y(k));
+        return lh;
     }
 
-    function lastBottom() {
-        var ps = boxes[3].querySelectorAll('p');
-        return ps.length ? ps[ps.length - 1].getBoundingClientRect().bottom : 0;
+    /* flow all the words through the four areas at this size and number of grid lines; true if everything fits */
+    function flow(size, k) {
+        var lh = placeOnGrid(k);
+        boxes.forEach(function (b) { b.innerHTML = ''; b.style.fontSize = size + 'px'; b.style.lineHeight = lh + 'px'; });
+        var words = paras[0], wi = 0;
+        for (var bi = 0; bi < boxes.length && wi < words.length; bi++) {
+            var box = boxes[bi], p = document.createElement('p'), kept = [];
+            if (box.clientHeight < lh - 0.5) { continue; }
+            box.appendChild(p);
+            while (wi < words.length) {
+                kept.push(words[wi]);
+                p.innerHTML = kept.join(' ');
+                if (box.scrollHeight > box.clientHeight + 0.5) {
+                    kept.pop();
+                    p.innerHTML = kept.join(' ');
+                    if (!kept.length) { box.removeChild(p); } else { p.classList.add('cont'); }   /* goes on in the next area: justify its last line too */
+                    break;
+                }
+                wi++;
+            }
+        }
+        return wi >= words.length;
+    }
+    /* the fewest grid lines (= the most open line spacing, up to 1.7) at which the text fits at this size, or 0 */
+    function linesFor(size) {
+        var H = G.bottom - G.top;
+        var kMax = Math.floor(H / (size * 1.35)), kMin = Math.ceil(H / (size * 1.7));
+        for (var k = kMin; k <= kMax; k++) { if (flow(size, k)) { return k; } }
+        return 0;
     }
 
     function layout() {
@@ -78,24 +95,16 @@
         /* the boxes must be shown to be measured; the plain text hidden */
         wrap.classList.add('ir-text-fits'); below.style.display = 'none';
         var L = rel(cells[0]), C = rel(cells[1]), N = rel(cells[2]);
-        var cap = wrap.querySelector('.ir-caption'), bottom = cap ? rel(cap).b : N.b;
-        var left = L.l, right = C.r;
-        /* 1 and 2 run on without a gap, as do 3 and 4; the text fills everything from the top of in nOmine DEI to the end of the titles line under it */
-        place(boxes[0], left, N.t, right, L.t - PAD);
-        place(boxes[1], C.l, L.t - PAD, right, C.t - PAD);
-        place(boxes[2], C.l, C.b + PAD, right, L.b + PAD);
-        place(boxes[3], left, L.b + PAD, right, bottom);
+        var cap = wrap.querySelector('.ir-caption');
+        G = { L: L, C: C, left: L.l, right: C.r, top: N.t, bottom: cap ? rel(cap).b : N.b };
         /* the largest size (in quarter pixels) at which everything fits */
-        var lo = MIN * 4, hi = MAX * 4, best = 0;
+        var lo = MIN * 4, hi = MAX * 4, best = 0, bestK = 0;
         while (lo <= hi) {
-            var mid = (lo + hi) >> 1;
-            if (flow(mid / 4)) { best = mid; lo = mid + 1; } else { hi = mid - 1; }
+            var mid = (lo + hi) >> 1, k = linesFor(mid / 4);
+            if (k) { best = mid; bestK = k; lo = mid + 1; } else { hi = mid - 1; }
         }
         if (!best) { plain(); return; }
-        /* then open up the line spacing a little, so that the last line ends level with the end of the titles line */
-        var size = best / 4, lh = size * 1.4;
-        while (lh < size * 1.7 && flow(size, lh + 0.05) && lastBottom() <= boxes[3].getBoundingClientRect().bottom + 0.5) { lh += 0.05; }
-        flow(size, lh);
+        flow(best / 4, bestK);
     }
 
     var t;
