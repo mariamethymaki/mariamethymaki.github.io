@@ -1218,16 +1218,17 @@ html[lang="el"] .tetradio-description .cover-text {
     opacity: 1;
 }
 .amen-text{
+    /* width and line spacing set by js/amen.js so that the text is as tall as the picture */
     flex: 0 0 var(--pw);
     width: var(--pw);
-    height: var(--ph);
-    overflow-y: auto;
     text-align: justify;
     hyphens: auto;
-    padding-right: 6px;
 }
 .amen-text p{
     margin-bottom: 10px;
+}
+.amen-text p:last-child{
+    margin-bottom: 0;
 }
 /* the word amen in the shape of the exhibition title (image cut from the amen proposal) */
 .amen-word{

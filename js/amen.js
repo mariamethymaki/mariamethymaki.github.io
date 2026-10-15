@@ -38,8 +38,32 @@
         else if (2 * w + 40 > avail) { w = Math.floor((avail - 40) / 2); h = Math.round(w * 1938 / 1200); }
         wrap.style.setProperty('--pw', w + 'px');
         wrap.style.setProperty('--ph', h + 'px');
+        fitText(narrow ? 0 : w, h);
+    }
+
+    /* the text starts at the top of the picture and ends at its bottom: it is made as narrow as needed
+       (never wider than a page) so that it is as tall as the picture; the last bit is taken up by the line spacing.
+       If it is taller than the picture even at the full width, the type gets smaller. */
+    var text = wrap.querySelector('.amen-text');
+    function fitText(w, h) {
+        if (!text) { return; }
+        text.style.width = ''; text.style.flexBasis = ''; text.style.fontSize = ''; text.style.lineHeight = '';
+        if (!w) { return; }
+        var fs = parseFloat(getComputedStyle(text).fontSize);
+        function setW(x) { text.style.width = x + 'px'; text.style.flexBasis = x + 'px'; }
+        setW(w);
+        while (text.scrollHeight > h && fs > 9) { fs -= 0.25; text.style.fontSize = fs + 'px'; }
+        /* the narrowest width at which the text is not taller than the picture */
+        var lo = Math.round(w * 0.4), hi = w;
+        while (lo < hi) { var mid = (lo + hi) >> 1; setW(mid); if (text.scrollHeight <= h) { hi = mid; } else { lo = mid + 1; } }
+        setW(lo);
+        /* then open the line spacing until the last line ends at the bottom of the picture */
+        var lh = parseFloat(getComputedStyle(text).lineHeight);
+        while (text.scrollHeight < h - 0.5 && lh < fs * 2) { lh += 0.05; text.style.lineHeight = lh + 'px'; if (text.scrollHeight > h) { lh -= 0.05; text.style.lineHeight = lh + 'px'; break; } }
     }
     size();
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(size); }
+    window.addEventListener('load', size);
     window.addEventListener('resize', size);
 
     var imgs = show.querySelectorAll('img'), front = 0, last = null;
