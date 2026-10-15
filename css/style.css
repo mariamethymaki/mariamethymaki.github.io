@@ -1231,9 +1231,9 @@ html[lang="el"] .tetradio-description .cover-text {
 }
 /* the word amen in the shape of the exhibition title (image cut from the amen proposal) */
 .amen-word{
-    height: 15px;
+    height: 13px;
     width: auto;
-    vertical-align: -1px;
+    vertical-align: 0;
 }
 @media (max-width: 767px){
     .amen-wrap{ flex-direction: column; gap: 20px; }
