@@ -50,7 +50,8 @@
             var hand = Math.random() < 2 / 3 || books.length === HANDMADE;
             b = hand ? books[Math.floor(Math.random() * HANDMADE)]
                      : books[HANDMADE + Math.floor(Math.random() * (books.length - HANDMADE))];
-            i = Math.floor(Math.random() * b.pages);
+            /* the handmade notebooks without their first and last page (the covers) */
+            i = hand ? 1 + Math.floor(Math.random() * (b.pages - 2)) : Math.floor(Math.random() * b.pages);
         } while (b.src(i) === last);
         last = b.src(i);
         var pre = new Image();
