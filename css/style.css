@@ -1117,12 +1117,14 @@ html[lang="el"] .tetradio-description .cover-text {
     text-align: justify;
 }
 
-/* ideal reader wanted: one line with the name and year of each work, level with the bottom of in nOmine DEI,
-   from under lOgos to where in nOmine DEI begins */
+/* ideal reader wanted: the line with the name and year of each work, under in nOmine DEI and as wide as it
+   (room is left under the books for it) */
 .ir-wrap{
-    --h: clamp(220px, min(100vh - 155px, (100vw - 320px) / 1.5), 1400px);
+    --h: clamp(220px, min(100vh - 181px, (100vw - 320px) / 1.5), 1400px);
     --gap: 28px;
     position: relative;
+    /* room for the titles line under in nOmine DEI (the grid itself adds 20px) */
+    padding-bottom: 26px;
     width: fit-content;
     max-width: 100%;
     margin-left: auto;
@@ -1134,12 +1136,10 @@ html[lang="el"] .tetradio-description .cover-text {
 }
 .ir-caption{
     position: absolute;
-    left: 0;
-    /* the bottom of the line is level with the bottom of in nOmine DEI (the tallest book, h high) */
-    top: var(--h);
-    transform: translateY(-100%);
-    /* in nOmine DEI is the last book, h * 1200/1938 wide */
-    right: calc(var(--h) * 1200 / 1938 + var(--gap));
+    /* in nOmine DEI is the last book, h * 1200/1938 wide and h high */
+    right: 0;
+    width: calc(var(--h) * 1200 / 1938);
+    top: calc(var(--h) + 8px);
     text-align: justify;
     text-align-last: left;
     font-size: 12px;

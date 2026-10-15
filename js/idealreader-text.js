@@ -1,6 +1,6 @@
 /* The work "ideal reader wanted": the text about the book flows through the four empty areas around lOgos and cAsa mIa s
    (as Maria drew them): 1. the band above lOgos, as wide as lOgos and cAsa mIa s together;
-   2. above cAsa mIa s; 3. below cAsa mIa s; 4. the band below lOgos, above the titles line.
+   2. above cAsa mIa s; 3. below cAsa mIa s; 4. the band below lOgos, down to the bottom of in nOmine DEI.
    Together with the books they form a rectangle that closes with in nOmine DEI.
    The type size is the largest at which the whole text fits; on screens where it does not fit even at 8px
    (and on phones) the text is shown as plain text under the books. */
@@ -66,17 +66,18 @@
 
     function layout() {
         var narrow = window.matchMedia('(max-width: 767px)').matches;
-        var cells = wrap.querySelectorAll('.phen-cell'), cap = wrap.querySelector('.ir-caption');
+        var cells = wrap.querySelectorAll('.phen-cell');
         function plain() { wrap.classList.remove('ir-text-fits'); below.style.display = ''; }
-        if (narrow || cells.length < 3 || !cap) { plain(); return; }
+        if (narrow || cells.length < 3) { plain(); return; }
         /* the boxes must be shown to be measured; the plain text hidden */
         wrap.classList.add('ir-text-fits'); below.style.display = 'none';
-        var L = rel(cells[0]), C = rel(cells[1]), N = rel(cells[2]), K = rel(cap);
-        var left = L.l, right = C.r, top = N.t;
-        place(boxes[0], left, top, right, L.t - PAD);
-        place(boxes[1], C.l, L.t, right, C.t - PAD);
-        place(boxes[2], C.l, C.b + PAD, right, L.b);
-        place(boxes[3], left, L.b + PAD, right, K.t - PAD / 2);
+        var L = rel(cells[0]), C = rel(cells[1]), N = rel(cells[2]);
+        var left = L.l, right = C.r;
+        /* 1 and 2 run on without a gap, as do 3 and 4; the text fills everything from the top to the bottom of in nOmine DEI */
+        place(boxes[0], left, N.t, right, L.t - PAD);
+        place(boxes[1], C.l, L.t - PAD, right, C.t - PAD);
+        place(boxes[2], C.l, C.b + PAD, right, L.b + PAD);
+        place(boxes[3], left, L.b + PAD, right, N.b);
         /* the largest size (in quarter pixels) at which everything fits */
         var lo = MIN * 4, hi = MAX * 4, best = 0;
         while (lo <= hi) {
