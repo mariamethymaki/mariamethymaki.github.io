@@ -1210,7 +1210,7 @@ html[lang="el"] .tetradio-description .cover-text {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;   /* every page fills the in nOmine DEI page shape; what does not fit is cut */
     opacity: 0;
     transition: opacity 0.9s ease;
 }

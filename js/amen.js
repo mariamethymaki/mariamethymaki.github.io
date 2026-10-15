@@ -29,7 +29,9 @@
     function size() {
         var narrow = window.matchMedia('(max-width: 767px)').matches;
         var top = document.querySelector('.topmenu'), foot = document.querySelector('.footer');
-        var h = window.innerHeight - (top ? top.offsetHeight : 0) - (foot ? foot.offsetHeight : 0) - 100;
+        /* the content height (without padding), as jQuery .height() in the in nOmine DEI viewer */
+        function ch(el) { if (!el) { return 0; } var s = getComputedStyle(el); return el.clientHeight - parseFloat(s.paddingTop) - parseFloat(s.paddingBottom); }
+        var h = window.innerHeight - ch(top) - ch(foot) - 100;
         var w = Math.round(h * 1200 / 1938);
         var avail = wrap.parentNode.clientWidth;
         if (narrow) { w = avail; h = Math.round(w * 1938 / 1200); }
