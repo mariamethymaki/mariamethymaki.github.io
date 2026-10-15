@@ -1324,9 +1324,14 @@ html[lang="el"] .tetradio-description .cover-text {
 .amen-col-work{
     font-size: 12px;
 }
+/* (τα μερικΑ): not a link, in the size of the part label */
+.amen-col-sub{
+    font-size: 11px;
+    line-height: 16px;
+}
 @media (max-width: 767px){
     .amen-opsi{ flex-basis: 100%; width: 100%; }
     .amen-col{ font-size: 10px; line-height: 13px; }
-    .amen-col-part{ font-size: 9px; line-height: 12px; }
+    .amen-col-part, .amen-col-sub{ font-size: 9px; line-height: 12px; }
     .amen-col-work{ font-size: 10px; }
 }
