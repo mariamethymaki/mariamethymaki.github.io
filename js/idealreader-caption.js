@@ -40,14 +40,22 @@
         cap.appendChild(probe);
         function width(s) { probe.textContent = s; return probe.getBoundingClientRect().width; }
         var W = cap.getBoundingClientRect().width;
-        var best = -1, bestDiff = Infinity, w1, w2;
-        for (var i = full.indexOf(' '); i !== -1; i = full.indexOf(' ', i + 1)) {
-            if (full.charAt(i - 1) === '-' || full.charAt(i + 1) === '-') { continue; } /* never break next to the dash */
-            var a = width(full.slice(0, i)), b = width(full.slice(i + 1));
-            if (Math.abs(a - b) < bestDiff) { bestDiff = Math.abs(a - b); best = i; w1 = a; w2 = b; }
+        var best, w1, w2;
+        /* always two lines: if the two halves do not fit, the type gets smaller (down to 7px) */
+        cap.style.fontSize = '';
+        var size = parseFloat(getComputedStyle(cap).fontSize);
+        for (; size >= 7; size -= 0.25) {
+            cap.style.fontSize = size + 'px';
+            var bestDiff = Infinity; best = -1;
+            for (var i = full.indexOf(' '); i !== -1; i = full.indexOf(' ', i + 1)) {
+                if (full.charAt(i - 1) === '-' || full.charAt(i + 1) === '-') { continue; } /* never break next to the dash */
+                var a = width(full.slice(0, i)), b = width(full.slice(i + 1));
+                if (Math.abs(a - b) < bestDiff) { bestDiff = Math.abs(a - b); best = i; w1 = a; w2 = b; }
+            }
+            if (best >= 0 && w1 <= W && w2 <= W) { break; }
         }
         cap.textContent = '';
-        if (best < 0 || w1 > W || w2 > W) { fill(cap, 0, full.length); return; }
+        if (best < 0 || w1 > W || w2 > W) { cap.style.fontSize = ''; fill(cap, 0, full.length); return; }
         [[0, best], [best + 1, full.length]].forEach(function (r, k) {
             var s = full.slice(r[0], r[1]);
             var line = document.createElement('span');
