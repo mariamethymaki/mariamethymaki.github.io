@@ -17,6 +17,7 @@
         { pages: 124, src: function (i) { return '/media/images/casamias/' + pad(i, 3) + '.jpg'; }, href: '/casamias.html', page: function (i) { return i + 1; } },
         { pages: 106, src: function (i) { return '/media/images/apokalypsi/' + pad(i, 3) + '.jpg'; }, href: '/revelation.html', page: function (i) { return i + 1; } }
     ];
+    var HANDMADE = books.length;   /* the handmade notebooks come first in the list */
     (window.PHENOMENA_BOOKS || []).forEach(function (b) {
         books.push({ pages: b.pages, src: function (i) { return '/media/images/phenomena/' + b.slug + '/' + pad(i + 1, 3) + '.jpg'; },
                      href: '/phenomena-book.html?b=' + b.slug, page: function (i) { return i + 1; } });
@@ -43,7 +44,10 @@
     function step() {
         var b, i;
         do {
-            b = books[Math.floor(Math.random() * books.length)];   /* every book equally often */
+            /* half of the time one of the four handmade notebooks, half of the time one of the phenOmena books */
+            var hand = Math.random() < 0.5 || books.length === HANDMADE;
+            b = hand ? books[Math.floor(Math.random() * HANDMADE)]
+                     : books[HANDMADE + Math.floor(Math.random() * (books.length - HANDMADE))];
             i = Math.floor(Math.random() * b.pages);
         } while (b.src(i) === last);
         last = b.src(i);
