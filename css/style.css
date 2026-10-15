@@ -1352,7 +1352,9 @@ html[lang="el"] .tetradio-description .cover-text {
     font-size: 15px;
     line-height: 22px;
     font-weight: 400;
-    text-align: center;
+    /* spread over the whole width */
+    text-align: justify;
+    text-align-last: justify;
     margin-bottom: 14px;
 }
 .amen-chapter{
