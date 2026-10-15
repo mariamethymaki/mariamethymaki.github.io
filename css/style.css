@@ -1242,3 +1242,27 @@ html[lang="el"] .tetradio-description .cover-text {
 @media (prefers-reduced-motion: reduce){
     .amen-show img{ transition: none; }
 }
+
+/* ideal reader wanted: the text about the book in the four areas around lOgos and cAsa mIa s (js/idealreader-text.js) */
+.ir-text{
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    text-align: justify;
+}
+.ir-text p{
+    margin: 0 0 0.5em;
+}
+.ir-text p:last-child{
+    margin-bottom: 0;
+}
+.ir-text p.cont{
+    text-align-last: justify;
+}
+.ir-text-fits .ir-text{
+    display: block;
+}
+.ir-text-below{
+    text-align: justify;
+    padding-top: 16px;
+}
