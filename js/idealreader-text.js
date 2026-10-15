@@ -1,6 +1,6 @@
 /* The work "ideal reader wanted": the text about the book flows through the four empty areas around lOgos and cAsa mIa s
    (as Maria drew them): 1. the band above lOgos, as wide as lOgos and cAsa mIa s together;
-   2. above cAsa mIa s; 3. below cAsa mIa s; 4. the band below lOgos, down to the bottom of in nOmine DEI.
+   2. above cAsa mIa s; 3. below cAsa mIa s; 4. the band below lOgos, down to where the titles line under in nOmine DEI ends.
    Together with the books they form a rectangle that closes with in nOmine DEI.
    The type size is the largest at which the whole text fits; on screens where it does not fit even at 8px
    (and on phones) the text is shown as plain text under the books. */
@@ -36,8 +36,9 @@
     }
 
     /* flow all the words through the four boxes at this size; true if everything fits */
-    function flow(size) {
-        boxes.forEach(function (b) { b.innerHTML = ''; b.style.fontSize = size + 'px'; b.style.lineHeight = (size * 1.4) + 'px'; });
+    function flow(size, lh) {
+        lh = lh || size * 1.4;
+        boxes.forEach(function (b) { b.innerHTML = ''; b.style.fontSize = size + 'px'; b.style.lineHeight = lh + 'px'; });
         var bi = 0, box = boxes[0];
         for (var pi = 0; pi < paras.length; pi++) {
             var words = paras[pi], wi = 0;
@@ -64,6 +65,11 @@
         return true;
     }
 
+    function lastBottom() {
+        var ps = boxes[3].querySelectorAll('p');
+        return ps.length ? ps[ps.length - 1].getBoundingClientRect().bottom : 0;
+    }
+
     function layout() {
         var narrow = window.matchMedia('(max-width: 767px)').matches;
         var cells = wrap.querySelectorAll('.phen-cell');
@@ -72,19 +78,24 @@
         /* the boxes must be shown to be measured; the plain text hidden */
         wrap.classList.add('ir-text-fits'); below.style.display = 'none';
         var L = rel(cells[0]), C = rel(cells[1]), N = rel(cells[2]);
+        var cap = wrap.querySelector('.ir-caption'), bottom = cap ? rel(cap).b : N.b;
         var left = L.l, right = C.r;
-        /* 1 and 2 run on without a gap, as do 3 and 4; the text fills everything from the top to the bottom of in nOmine DEI */
+        /* 1 and 2 run on without a gap, as do 3 and 4; the text fills everything from the top of in nOmine DEI to the end of the titles line under it */
         place(boxes[0], left, N.t, right, L.t - PAD);
         place(boxes[1], C.l, L.t - PAD, right, C.t - PAD);
         place(boxes[2], C.l, C.b + PAD, right, L.b + PAD);
-        place(boxes[3], left, L.b + PAD, right, N.b);
+        place(boxes[3], left, L.b + PAD, right, bottom);
         /* the largest size (in quarter pixels) at which everything fits */
         var lo = MIN * 4, hi = MAX * 4, best = 0;
         while (lo <= hi) {
             var mid = (lo + hi) >> 1;
             if (flow(mid / 4)) { best = mid; lo = mid + 1; } else { hi = mid - 1; }
         }
-        if (best) { flow(best / 4); } else { plain(); }
+        if (!best) { plain(); return; }
+        /* then open up the line spacing a little, so that the last line ends level with the end of the titles line */
+        var size = best / 4, lh = size * 1.4;
+        while (lh < size * 1.7 && flow(size, lh + 0.05) && lastBottom() <= boxes[3].getBoundingClientRect().bottom + 0.5) { lh += 0.05; }
+        flow(size, lh);
     }
 
     var t;
