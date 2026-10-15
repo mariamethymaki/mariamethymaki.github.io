@@ -1078,6 +1078,11 @@ height: 300px;
     font-size: 14px;
     line-height: 18px;
 }
+/* amen, the whole work: first in the side menu, a little larger */
+.nav-sidemenu .nav > li.menu-amen > a {
+    font-size: 16px;
+    line-height: 20px;
+}
 /* the three part titles (idEal wItness wAnted, saturAted phenOmena facAdes, cAmara) slightly heavier than the other entries (400 instead of 300); the open page stays bold */
 .nav-sidemenu .nav > li[data-pages^="idealreader"]:not(.active) > a,
 .nav-sidemenu .nav > li[data-pages^="phenomena"]:not(.active) > a,
@@ -1181,4 +1186,59 @@ html[lang="el"] .tetradio-description .cover-text {
     .nav-sidemenu .nav > li[data-pages="forallthatarenot.html"] > a {
         padding-top: 4px;
     }
+}
+
+/* amen: on the left a slideshow of pages of all the books, on the right the text;
+   each is the size of one page of in nOmine DEI (--pw x --ph, set by js/amen.js) */
+.amen-wrap{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 20px;
+}
+.amen-show{
+    display: block;
+    position: relative;
+    flex: 0 0 var(--pw);
+    width: var(--pw);
+    height: var(--ph);
+}
+.amen-show img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+.amen-show img.on{
+    opacity: 1;
+}
+.amen-text{
+    flex: 0 0 var(--pw);
+    width: var(--pw);
+    height: var(--ph);
+    overflow-y: auto;
+    text-align: justify;
+    hyphens: auto;
+    padding-right: 6px;
+}
+.amen-text p{
+    margin-bottom: 10px;
+}
+/* the word amen in the shape of the exhibition title (image cut from the amen proposal) */
+.amen-word{
+    height: 15px;
+    width: auto;
+    vertical-align: -1px;
+}
+@media (max-width: 767px){
+    .amen-wrap{ flex-direction: column; gap: 20px; }
+    .amen-text{ height: auto; overflow: visible; padding-right: 0; }
+}
+@media (prefers-reduced-motion: reduce){
+    .amen-show img{ transition: none; }
 }
