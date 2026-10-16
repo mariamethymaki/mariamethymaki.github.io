@@ -1444,3 +1444,17 @@ html[lang="el"] .tetradio-description .cover-text {
     .amen-opsi-cols{ flex-direction: column; gap: 6px; }
     .amen-col{ white-space: normal; }
 }
+/* bio: the text "instead of a CV" on the left, the spread of folio 27 of in nOmine DEI on the right */
+.bio-title{
+    font-weight: 400;
+    margin-bottom: 12px !important;
+}
+.bio-folio{
+    display: flex;
+    padding: 0 0 20px;
+}
+.bio-folio img{
+    width: 50%;
+    height: auto;
+    display: block;
+}
