@@ -38,6 +38,7 @@
         /* the two books side by side (on phones one under the other) */
         if (narrow) { w = Math.floor(avail / 2); h = Math.round(w * 1938 / 1200); }
         else if (4 * w + GAP > avail) { w = Math.floor((avail - GAP) / 4); h = Math.round(w * 1938 / 1200); }
+        if (!narrow) { w = Math.round(w * 0.8); h = Math.round(w * 1938 / 1200); }   /* everything a little smaller */
         wrap.style.setProperty('--pw', w + 'px');
         wrap.style.setProperty('--ph', h + 'px');
         wrap.style.setProperty('--bw', (narrow ? 2 * w : 4 * w + GAP) + 'px');
