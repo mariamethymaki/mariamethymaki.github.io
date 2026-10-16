@@ -1425,3 +1425,22 @@ html[lang="el"] .tetradio-description .cover-text {
     padding-left: 0;
     padding-right: 0;
 }
+/* amen elevation: each column as wide as its two lines need (plus an equal share of the rest), every line on one line */
+.amen-opsi-cols{
+    justify-content: space-between;
+    gap: 16px;
+}
+.amen-col{
+    flex: 1 1 auto;
+    white-space: nowrap;
+}
+@media (max-width: 1500px){
+    .amen-opsi-cols{ gap: 4px; }
+    .amen-col{ font-size: 11px; }
+    .amen-col-part, .amen-col-sub{ font-size: 9px; }
+    .amen-col-work{ font-size: 10px; }
+}
+@media (max-width: 767px){
+    .amen-opsi-cols{ flex-direction: column; gap: 6px; }
+    .amen-col{ white-space: normal; }
+}
