@@ -1598,7 +1598,9 @@ body:not(.ir-open) .ir-text, body:not(.ir-open) .ir-text-below{ visibility: hidd
 body:not(.ir-open) .ir-text-below{ display: none !important; }
 .ir-toggle{
     display: block;
-    margin: 4px auto 10px;
+    position: absolute;
+    margin: 0;
+    white-space: nowrap;
     padding: 0;
     border: 0;
     background: none;
@@ -1610,3 +1612,4 @@ body:not(.ir-open) .ir-text-below{ display: none !important; }
 }
 .ir-toggle:hover{ text-decoration: underline; }
 .ir-toggle-sign{ display: inline-block; width: 26px; }
+@media (max-width: 767px){ .ir-toggle{ position: static; margin: 10px 0 10px auto; } }

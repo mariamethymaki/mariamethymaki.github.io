@@ -32,7 +32,7 @@
     toggle.className = 'ir-toggle';
     toggle.innerHTML = '<span class="ir-toggle-sign">+</span> amen';
     toggle.setAttribute('aria-expanded', 'false');
-    wrap.parentNode.insertBefore(toggle, wrap.nextSibling);
+    wrap.appendChild(toggle);   /* placed at the end of the text, far right, in layout() */
     toggle.addEventListener('click', function () {
         var open = !document.body.classList.contains('ir-open');
         document.body.classList.toggle('ir-open', open);
@@ -111,6 +111,11 @@
         var L = rel(cells[0]), C = rel(cells[1]), N = rel(cells[2]);
         var cap = wrap.querySelector('.ir-caption');
         G = { L: L, C: C, left: L.l, right: C.r, top: N.t, bottom: cap ? rel(cap).b : N.b };
+        /* the last line of the space is kept for "+ amen", at the end of the text, far right */
+        var TH = toggle.offsetHeight || 36;
+        toggle.style.left = (G.right - toggle.offsetWidth) + 'px';
+        toggle.style.top = (G.bottom - TH) + 'px';
+        G.bottom -= TH + 4;
         /* the largest size (in quarter pixels) at which everything fits */
         var lo = MIN * 4, hi = MAX * 4, best = 0, bestK = 0;
         while (lo <= hi) {
