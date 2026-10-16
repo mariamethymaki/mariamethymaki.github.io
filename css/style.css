@@ -1545,3 +1545,17 @@ html[lang="el"] .tetradio-description .cover-text {
     /* the Greek page has only the credit line: at the bottom right */
     .vimeo-poem:has(> .vimeo-credit:only-child){ display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
 }
+/* WaveScript (ΚυματοΓραφΗ): exactly like logOria; its video is 4:3, 25% larger (725 x 544) */
+@media (min-width: 992px){
+    .wavescript-container.logoria-container{
+        margin-left: auto;
+        grid-template-columns: 725px 500px;   /* the credit line is longer: room for it at the logOria size */
+    }
+    .wavescript-container.logoria-container .vimeo-container{
+        width: 725px;
+        height: 544px;
+    }
+    .wavescript-container.logoria-container .vimeo-poem{
+        height: 544px;
+    }
+}
