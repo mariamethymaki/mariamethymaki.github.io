@@ -35,11 +35,12 @@
         var menu = document.querySelector('.nav-sidemenu');
         var menuCol = menu ? menu.parentNode : null;
         var avail = narrow ? wrap.parentNode.clientWidth : document.documentElement.clientWidth - (menuCol ? menuCol.offsetWidth : 0) - 48;
-        /* the two books one under the other, each as tall as the screen allows and never wider than the space */
-        if (2 * w > avail) { w = Math.floor(avail / 2); h = Math.round(w * 1938 / 1200); }
+        /* the two books side by side (on phones one under the other) */
+        if (narrow) { w = Math.floor(avail / 2); h = Math.round(w * 1938 / 1200); }
+        else if (4 * w + GAP > avail) { w = Math.floor((avail - GAP) / 4); h = Math.round(w * 1938 / 1200); }
         wrap.style.setProperty('--pw', w + 'px');
         wrap.style.setProperty('--ph', h + 'px');
-        wrap.style.setProperty('--bw', 2 * w + 'px');
+        wrap.style.setProperty('--bw', (narrow ? 2 * w : 4 * w + GAP) + 'px');
         books.forEach(function (b) { b.size(w, h); });
     }
 

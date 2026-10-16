@@ -1582,8 +1582,7 @@ html[lang="el"] .tetradio-description .cover-text {
 .amen-wrap details.amen-text .amen-chapter-body{ padding-left: 18px; }
 .amen-wrap details.amen-text summary{ padding-top: 0; }
 /* amen: book 1, under it book 2, then "+ amen" in the middle (larger), then the text when opened and the elevation */
-.amen-books{ flex-direction: column; }
-.amen-books .amen-show{ flex: none; height: var(--ph); }
+@media (max-width: 767px){ .amen-books{ flex-direction: column; } .amen-books .amen-show{ flex: none; } }
 .amen-wrap details.amen-text{ flex: 0 0 var(--bw); width: var(--bw); }
 .amen-wrap details.amen-text > summary{
     font-size: 18px;
