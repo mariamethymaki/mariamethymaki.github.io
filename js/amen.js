@@ -39,6 +39,7 @@
         else if (3 * w + 40 > avail) { w = Math.floor((avail - 40) / 3); h = Math.round(w * 1938 / 1200); }
         wrap.style.setProperty('--pw', w + 'px');
         wrap.style.setProperty('--ph', h + 'px');
+        if (window.amenBookSize) { window.amenBookSize(w, h); }
         fitText(narrow ? 0 : w, h);
     }
 
@@ -69,13 +70,12 @@
     window.addEventListener('load', size);
     window.addEventListener('resize', size);
 
-    /* the slideshow is an open book: a random spread of a random book; every 2 seconds the right page turns over
-       and the next random spread appears (two times out of three from the handmade notebooks, never their covers) */
-    show.innerHTML = '<img class="pg-left" alt=""><img class="pg-right" alt="">' +
-        '<div class="leaf"><img class="leaf-front" alt=""><img class="leaf-back" alt=""></div>';
-    var L = show.querySelector('.pg-left'), R = show.querySelector('.pg-right'), leaf = show.querySelector('.leaf'),
-        LF = show.querySelector('.leaf-front'), LB = show.querySelector('.leaf-back');
-    var last = null, busy = false;
+    /* the slideshow is an open book, turned with turn.js like the flipbooks of the site: a random spread of a random book;
+       every 2 seconds the page turns and the next random spread appears
+       (two times out of three from the handmade notebooks, never their covers) */
+    show.innerHTML = '<div id="amenBook"></div>';
+    var $book = window.jQuery ? jQuery('#amenBook') : null;
+    var last = null, ready = false, busy = false, PW = 0, PH = 0;
     function pick() {
         var b, n;
         do {
@@ -87,36 +87,56 @@
             n = lo + 2 * Math.floor(Math.random() * Math.floor((hi - lo) / 2 + 1));
         } while (b.src(n - 1) + n === last);
         last = b.src(n - 1) + n;
-        return { b: b, left: b.src(n - 1), right: b.src(n), href: lang + b.href + '#p=' + n };
+        return { left: b.src(n - 1), right: b.src(n), href: lang + b.href + '#p=' + n };
     }
     function load(srcs, done) {
         var k = srcs.length;
         srcs.forEach(function (s) { var im = new Image(); im.onload = im.onerror = function () { if (--k === 0) { done(); } }; im.src = s; });
     }
-    function first() {
-        var s = pick();
-        load([s.left, s.right], function () { L.src = s.left; R.src = s.right; show.href = s.href; show.classList.add('ready'); });
+    function pageEl(src) {
+        var d = document.createElement('div');
+        d.className = 'amen-page';
+        d.innerHTML = '<img alt="" src="' + src + '">';
+        return d;
     }
-    function turn() {
-        if (busy) { return; }
+    var hrefs = {};
+    function build(s) {
+        if (ready) { $book.turn('destroy'); }
+        $book.empty();
+        $book.append(pageEl(s.left)).append(pageEl(s.left)).append(pageEl(s.right));   /* page 1 is never shown */
+        hrefs = { 2: s.href };
+        $book.turn({ page: 2, display: 'double', width: 2 * PW, height: PH, acceleration: false, gradients: true,
+                     elevation: 50, duration: 900,
+                     when: { turned: function (e, page) { var v = $book.turn('view'); if (hrefs[v[0]]) { show.href = hrefs[v[0]]; } busy = false; } } });
+        $book.turn('disable', true);   /* no turning by hand: a click opens the book */
+        show.href = s.href;
+        ready = true;
+    }
+    function turnPage() {
+        if (!ready || busy) { return; }
         busy = true;
         var s = pick();
         load([s.left, s.right], function () {
-            LF.src = R.src;          /* the page that turns: the current right page ... */
-            LB.src = s.left;         /* ... with the new left page on its back */
-            R.src = s.right;         /* under it, the new right page */
-            leaf.classList.remove('turned');
-            leaf.style.display = 'block';
-            void leaf.offsetWidth;
-            leaf.classList.add('turned');
-            setTimeout(function () {
-                L.src = s.left; show.href = s.href;
-                leaf.style.display = 'none'; leaf.classList.remove('turned');
-                busy = false;
-            }, 900);
+            var n = $book.turn('pages');
+            if (n > 120) { build(s); busy = false; return; }   /* start a fresh book now and then */
+            $book.turn('addPage', pageEl(s.left), n + 1);
+            $book.turn('addPage', pageEl(s.right), n + 2);
+            hrefs[n + 1] = s.href;
+            $book.turn('disable', false); $book.turn('next'); $book.turn('disable', true);
         });
     }
-    first();
-    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!still) { setInterval(turn, 2000); }
+    window.amenBookSize = function (w, h) {
+        PW = w; PH = h;
+        if (ready) { $book.turn('size', 2 * w, h); }
+    };
+    size();
+    if ($book) {
+        var s0 = pick();
+        load([s0.left, s0.right], function () {
+            var go = function () { if (PW) { build(s0); } else { setTimeout(go, 50); } };
+            go();
+        });
+        var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!still) { setInterval(turnPage, 2000); }
+    }
 })();
