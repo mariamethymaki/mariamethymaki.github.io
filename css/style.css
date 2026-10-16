@@ -1535,8 +1535,7 @@ html[lang="el"] .tetradio-description .cover-text {
 }
 .vimeo-poem p.vimeo-credit{
     text-align: right;
-    font-size: 10px;
-    white-space: nowrap;
+    white-space: nowrap;   /* size set by js/logoria-credit.js */
 }
 @media (min-width: 992px){
     /* the whole a little lower */
