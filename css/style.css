@@ -1505,3 +1505,24 @@ html[lang="el"] .tetradio-description .cover-text {
 .vimeo-text .vimeo-poem{
     text-align: justify;
 }
+@media (min-width: 992px){
+    /* the text to the right of the video, as tall as the video, with a scroll bar */
+    .logoria-container{
+        width: auto;
+        display: grid;
+        grid-template-columns: 800px 380px;
+        column-gap: 28px;
+        justify-content: center;
+    }
+    .logoria-container .vimeo-container{ grid-column: 1; grid-row: 1; }
+    .logoria-container .vimeo-text{ display: contents; }
+    .logoria-container .vimeo-credit{ grid-column: 1; grid-row: 2; padding-top: 6px; }
+    .logoria-container .vimeo-poem{
+        grid-column: 2;
+        grid-row: 1;
+        height: 450px;
+        overflow-y: auto;
+        padding-right: 10px;
+        margin: 0 !important;
+    }
+}
