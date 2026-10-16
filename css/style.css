@@ -1449,12 +1449,7 @@ html[lang="el"] .tetradio-description .cover-text {
     font-weight: 400;
     margin-bottom: 12px !important;
 }
-.bio-folio{
-    display: flex;
-    padding: 0 0 20px;
-}
-.bio-folio img{
-    width: 100%;
-    height: auto;
-    display: block;
+/* the picture fills the in nOmine DEI page shape like the amen slideshow (sized by js/bio.js) */
+.bio-cv{
+    margin-top: 14px;
 }
