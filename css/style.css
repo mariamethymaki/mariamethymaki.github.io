@@ -1471,6 +1471,7 @@ html[lang="el"] .tetradio-description .cover-text {
     .contact-container .row{
         position: relative;
         width: 100%;
+        left: -60px;   /* photos and e-mail a little to the left */
     }
     .contact-container .row > .col-md-9{
         flex: 0 0 100%;
