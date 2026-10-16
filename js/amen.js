@@ -41,6 +41,21 @@
         wrap.style.setProperty('--ph', h + 'px');
         wrap.style.setProperty('--bw', (narrow ? 2 * w : 4 * w + GAP) + 'px');
         books.forEach(function (b) { b.size(w, h); });
+        fitText(narrow);
+    }
+
+    /* the text under the first book is as tall as the elevation under the second: the type gets smaller (or larger, up to 13px) */
+    function fitText(narrow) {
+        var text = wrap.querySelector('.amen-text'), opsi = wrap.querySelector('.amen-opsi');
+        if (!text || !opsi) { return; }
+        text.style.fontSize = ''; text.style.lineHeight = '';
+        if (narrow) { return; }
+        var H = opsi.offsetHeight, fs = 13;
+        function set(x) { text.style.fontSize = x + 'px'; text.style.lineHeight = (x * 1.4) + 'px'; }
+        set(fs);
+        while (text.offsetHeight > H && fs > 6) { fs -= 0.1; set(fs); }
+        var lh = fs * 1.4;
+        while (text.offsetHeight < H - 0.5 && lh < fs * 2) { lh += 0.05; text.style.lineHeight = lh + 'px'; if (text.offsetHeight > H) { lh -= 0.05; text.style.lineHeight = lh + 'px'; break; } }
     }
 
     function load(srcs, done) {

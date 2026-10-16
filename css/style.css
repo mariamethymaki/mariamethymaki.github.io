@@ -1578,3 +1578,10 @@ html[lang="el"] .tetradio-description .cover-text {
     width: calc(2 * var(--pw));
 }
 @media (max-width: 767px){ .amen-books{ flex-direction: column; } }
+/* amen: under the first book the text, under the second the elevation; the text is made smaller to be as tall as the elevation (js/amen.js) */
+@media (min-width: 768px){
+    .amen-wrap{ column-gap: 24px; align-items: flex-start; }
+    .amen-wrap .amen-text{ flex: 0 0 calc(2 * var(--pw)); width: calc(2 * var(--pw)); }
+    .amen-wrap .amen-opsi{ flex: 0 0 calc(2 * var(--pw)); width: calc(2 * var(--pw)); }
+    .amen-wrap .amen-text p{ margin-bottom: 0; }
+}
