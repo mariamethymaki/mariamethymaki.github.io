@@ -1465,7 +1465,8 @@ html[lang="el"] .tetradio-description .cover-text {
     .contact-container{
         flex: 1 0 auto;
         display: flex;
-        align-items: center;
+        align-items: center;
+        padding-bottom: 80px;   /* a little above the middle */
     }
     .contact-container .row{
         position: relative;
