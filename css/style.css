@@ -12,7 +12,8 @@
 body {
     /*padding-top: 80px;*/
     /*padding-bottom: 40px;*/
-    font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
+    font-weight: 300;
     background:transparent;
     color: #333333;
     font-size: 13px;
@@ -130,6 +131,13 @@ video{
     font-size:13px;
 }
 
+/* book pages: start the side menu level with the top of the book (its column has 1rem top padding) */
+@media (min-width: 768px) {
+    .row:has(> .pt-md-3) .nav-sidemenu {
+        padding-top: 9px;
+    }
+}
+
 .nav-sidemenu .nav > .active > a,
 .nav-sidemenu .nav > .active > a:hover,
 .nav-sidemenu .nav > .active > a:focus {
@@ -188,26 +196,70 @@ video{
     background-size:100% 100%;
 }
 
+/*casamias*/
+#casamias{
+    width:100%;
+    height:1410px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+}
+
+#casamias .turn-page{
+    background-color:#ccc;
+    background-size:100% 100%;
+}
+
 .nominedei-page {
     display: none;
 }
 
 .first-nominedei-page {
-    font-family: Courier, Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
     font-size: 12px;
     line-height: 18px;
+    text-align: left;
+}
+
+.work-dimensions {
+    text-align: right;
+}
+
+/* the "Pages: a-b" line and the date-code lines of CasaMIaS: same font as the rest of the site (Montserrat) */
+.pages-line {
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+}
+
+/* cover text sits at the bottom of the right column (wide screens only) */
+@media (min-width: 992px) {
+    #workdetails {
+        position: relative;
+    }
+
+    .cover-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 30px;
+        max-height: 100%;
+        overflow-y: auto;
+    }
 }
 
 .nominedei-description {
-    font-family: methimaki;
-    font-size: 24px;
-    line-height: 22px;
+    font-family: 'Montserrat', 'Noto Sans', sans-serif;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: justify;
     padding-right: 30px;
 }
 
 @media (max-width: 767px) {
     .nominedei-description {
-        font-size:22px;
+        font-size:16px;
         padding-left: 30px;
         padding-right: 30px;
     }
@@ -687,6 +739,83 @@ video{
     text-decoration: none;
 }
 
+/* Anaglypto panels <-> Logos texts */
+.anaglypto-hl {
+    position: absolute;
+    top: 9%;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.16);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    z-index: 2;
+}
+
+.anaglypto-hl.on {
+    opacity: 1;
+}
+
+.anaglypto-panel-info {
+    padding-top: 10px;
+    padding-right: 2px;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+}
+
+.anaglypto-panel-info p {
+    margin: 0 0 6px;
+}
+
+.anaglypto-panel-info ul {
+    list-style: none;
+    margin: 4px 0 8px;
+    padding: 0;
+}
+
+.anaglypto-panel-info a,
+.anaglypto-link a {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+.anaglypto-panel-info a span {
+    opacity: 0.75;
+}
+
+.anaglypto-panel-buttons button {
+    width: 26px;
+    height: 26px;
+    margin-left: 4px;
+    padding: 0;
+    border: 1px solid #999;
+    background: transparent;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.anaglypto-panel-buttons button[aria-pressed="true"] {
+    background: #444;
+    border-color: #444;
+    color: #fff;
+}
+
+.anaglypto-link {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+}
+
+/* caption under each Anaglypto detail photo */
+.detail-label {
+    font-size: 13px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-right: 2px;
+    text-align: right;
+}
+
 @media (max-width:767.98px){
     .anaglypto-description {
         font-size: 12px;
@@ -706,6 +835,7 @@ box-shadow: 0px 1px 5px #000, inset 0px 1px 10px rgba(255,255,255,0.5);
 -moz-box-shadow: 0px 1px 5px #000, inset 0px 1px 10px rgba(255,255,255,0.5);	
 border-radius: 0%;
 cursor: none;
+z-index: 1;
 /*Set the size of the magnifier glass:*/
 width: 300px;
 height: 300px;
@@ -779,6 +909,11 @@ height: 300px;
 
 .copyright{
     padding-right: 30px;
+}
+
+/* both copyright lines on one line */
+.copyright > div {
+    display: inline;
 }
 
 .sm-icon {
@@ -870,4 +1005,557 @@ height: 300px;
     max-height: 75vh;
     width: 100%;
     object-fit: contain;
+}
+
+/*facades of saturated phenomena: grid of 20 books with random slideshow, and the book viewer*/
+.phen-grid{
+    --h: clamp(120px, 24vh, 300px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 20px;
+}
+.phen-cell{
+    display: block;
+    position: relative;
+    height: var(--h);
+    aspect-ratio: var(--r);
+    background-color: #eee;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.18);
+    overflow: hidden;
+}
+.phen-cell img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+.phen-cell img.on{
+    opacity: 1;
+}
+@media (prefers-reduced-motion: reduce){
+    .phen-cell img{ transition: none; }
+}
+#phenbook{
+    width:100%;
+    height:1410px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+}
+#phenbook .turn-page{
+    background-color:#ddd;
+    background-size:100% 100%;
+}
+@media (min-width: 992px){
+    .phen-book-container{
+        float:right
+    }
+}
+
+/*ideal reader wanted: the three books as three slideshows*/
+.ir-grid{
+    /* as tall as the book viewers (the tallest book), but never wider than the page: the three together are 1.46 x that height wide */
+    --h: clamp(220px, min(100vh - 155px, (100vw - 320px) / 1.5), 1400px);
+    gap: 28px;
+}
+@media (max-width: 767px){
+    .ir-grid{
+        --h: calc((100vw - 60px) / 1.5);
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+}
+
+/* the two works made of several books are a little larger in the side menu */
+.nav-sidemenu .nav > li[data-pages^="idealreader"] > a,
+.nav-sidemenu .nav > li[data-pages^="phenomena"] > a,
+.nav-sidemenu .nav > li.menu-camara > a {
+    font-size: 14px;
+    line-height: 18px;
+}
+/* amen, the whole work: first in the side menu, a little larger */
+.nav-sidemenu .nav > li.menu-amen > a {
+    font-size: 16px;
+    line-height: 20px;
+}
+/* the three part titles (idEal wItness wAnted, saturAted phenOmena facAdes, cAmara) slightly heavier than the other entries (400 instead of 300); the open page stays bold */
+.nav-sidemenu .nav > li[data-pages^="idealreader"]:not(.active) > a,
+.nav-sidemenu .nav > li[data-pages^="phenomena"]:not(.active) > a,
+.nav-sidemenu .nav > li.menu-camara:not(.active) > a {
+    font-weight: 400;
+}
+.nav-sidemenu .nav > li[data-pages="nominedei.html"] > a,
+.nav-sidemenu .nav > li[data-pages="logos.html"] > a,
+.nav-sidemenu .nav > li[data-pages="casamias.html"] > a,
+.nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a,
+.nav-sidemenu .nav > li[data-pages="forallthatarenot.html"] > a {
+    font-size: 13px;
+}
+.ir-grid{
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* In nomine Dei: the poems under "Pages:" in the size of the "Pages:" line, words run together */
+.page-text{
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+}
+
+/* Logos, Greek page: the texts are running text, aligned left and right */
+html[lang="el"] #workdetails .cover-text,
+html[lang="el"] .tetradio-description .cover-text {
+    text-align: justify;
+}
+
+/* ideal reader wanted: the line with the name and year of each work, under in nOmine DEI and as wide as it
+   (room is left under the books for it) */
+.ir-wrap{
+    --h: clamp(220px, min(100vh - 181px, (100vw - 320px) / 1.5), 1400px);
+    --gap: 28px;
+    position: relative;
+    /* room for the titles line under in nOmine DEI (the grid itself adds 20px) */
+    padding-bottom: 26px;
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ir-wrap .ir-grid{
+    --h: inherit;
+    gap: var(--gap);
+}
+.ir-caption{
+    position: absolute;
+    /* in nOmine DEI is the last book, h * 1200/1938 wide and h high */
+    right: 0;
+    width: calc(var(--h) * 1200 / 1938);
+    top: calc(var(--h) + 8px);
+    text-align: justify;
+    text-align-last: left;
+    font-size: 12px;
+    line-height: 18px;
+}
+@media (max-width: 767px){
+    .ir-wrap{
+        --h: calc((100vw - 60px) / 1.5);
+        --gap: 12px;
+    }
+    .ir-caption{ font-size: 10px; line-height: 14px; }
+}
+.ir-caption .ir-line{ display: block; white-space: nowrap; }
+.ir-caption a{ color: inherit; text-decoration: none; }
+.ir-caption a:hover{ text-decoration: underline; }
+
+/* for All that Are not: slideshow of the framed pictures, standing on the text line, left-aligned with it */
+.fatan-stage{ display: flex; align-items: center; justify-content: center; }
+.fatan-wrap{ display: flex; flex-direction: column; align-items: flex-start; }
+.fatan-box{ position: relative; }
+.fatan-box img{
+    position: absolute; left: 0; bottom: 0;
+    opacity: 0; transition: opacity 0.6s ease;
+}
+.fatan-box img.on{ opacity: 1; }
+.fatan-caption{ margin-top: 6px; font-size: 12px; line-height: 18px; white-space: nowrap; }
+@media (max-width: 767px){ .fatan-caption{ font-size: 10px; line-height: 14px; } }
+
+/* side menu: works that belong together sit closer
+   (in nOmine DEI / lOgos / CasaMIaS, and anAglypto / for All that Are not) */
+@media (min-width: 768px) {
+    .nav-sidemenu .nav > li[data-pages="nominedei.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="anaglypto.html"] > a {
+        padding-bottom: 0;
+    }
+    /* the part titles (idEal wItness wAnted, cAmara) a little closer to the works they contain */
+    .nav-sidemenu .nav > li[data-pages="idealreader.html"] > a,
+    .nav-sidemenu .nav > li.menu-camara > a {
+        padding-bottom: 0;
+    }
+    .nav-sidemenu .nav > li[data-pages="logos.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="casamias.html"] > a,
+    .nav-sidemenu .nav > li[data-pages="forallthatarenot.html"] > a {
+        padding-top: 4px;
+    }
+}
+
+/* amen: on the left a slideshow of pages of all the books, on the right the text;
+   each is the size of one page of in nOmine DEI (--pw x --ph, set by js/amen.js) */
+.amen-wrap{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 20px;
+}
+.amen-show{
+    display: block;
+    position: relative;
+    flex: 0 0 var(--pw);
+    width: var(--pw);
+    height: var(--ph);
+}
+.amen-show img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* every page fills the in nOmine DEI page shape; what does not fit is cut */
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+.amen-show img.on{
+    opacity: 1;
+}
+.amen-text{
+    /* width and line spacing set by js/amen.js so that the text is as tall as the picture */
+    flex: 0 0 var(--pw);
+    width: var(--pw);
+    text-align: justify;
+    hyphens: auto;
+}
+.amen-text p{
+    margin-bottom: 10px;
+}
+.amen-text p:last-child{
+    margin-bottom: 0;
+}
+/* the word amen in the shape of the exhibition title (image cut from the amen proposal) */
+.amen-word{
+    height: 13px;
+    width: auto;
+    vertical-align: 0;
+}
+@media (max-width: 767px){
+    .amen-wrap{ flex-direction: column; gap: 20px; }
+    .amen-text{ height: auto; overflow: visible; padding-right: 0; }
+}
+@media (prefers-reduced-motion: reduce){
+    .amen-show img{ transition: none; }
+}
+
+/* ideal reader wanted: the text about the book in the four areas around lOgos and cAsa mIa s (js/idealreader-text.js) */
+.ir-text{
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    text-align: justify;
+}
+.ir-text p{
+    margin: 0 0 0.5em;
+}
+.ir-text p:last-child{
+    margin-bottom: 0;
+}
+.ir-text p.cont{
+    text-align-last: justify;
+}
+.ir-text-fits .ir-text{
+    display: block;
+}
+.ir-text-below{
+    text-align: justify;
+    padding-top: 16px;
+}
+
+/* amen: under the slideshow and the text, the elevation of the installation, as wide as the two together;
+   each of the three parts is a link to its work; under it the name of the work, the part, and the works it contains */
+.amen-wrap{
+    flex-wrap: wrap;
+    row-gap: 14px;
+}
+.amen-opsi{
+    flex: 0 0 calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    width: calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    padding-bottom: 10px;
+}
+.amen-opsi-pic{
+    position: relative;
+}
+.amen-opsi-pic img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.amen-zone{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0);
+    transition: background 0.3s ease;
+}
+.amen-zone:hover{
+    background: rgba(255, 255, 255, 0.35);
+}
+.amen-opsi-cols{
+    display: flex;
+}
+.amen-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 6px;
+    font-size: 12px;
+    line-height: 15px;
+}
+.amen-col a{
+    color: inherit;
+    text-decoration: none;
+}
+.amen-col a:hover{
+    text-decoration: underline;
+}
+.amen-col-head{
+    margin-bottom: 2px;
+}
+/* the part, on the same line as the name of the work */
+.amen-col-part{
+    font-size: 10px;
+}
+.amen-col-work{
+    font-size: 11px;
+    line-height: 14px;
+}
+/* (τα μερικΑ): not a link, in the size of the part label */
+.amen-col-sub{
+    font-size: 10px;
+    line-height: 13px;
+}
+@media (max-width: 767px){
+    .amen-opsi{ flex-basis: 100%; width: 100%; }
+    .amen-col{ font-size: 10px; line-height: 13px; }
+    .amen-col-part{ font-size: 9px; }
+    .amen-col-sub{ font-size: 9px; line-height: 12px; }
+    .amen-col-work{ font-size: 10px; }
+}
+
+/* amen: the theoretical dimension of the artistic practice, under the elevation; three chapters that open on a click */
+.amen-theory{
+    flex: 0 0 calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    width: calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    margin-top: -14px;   /* cancels the row gap of the wrap: right under the elevation */
+    padding-bottom: 20px;
+}
+.amen-theory-title{
+    white-space: pre-wrap;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    /* spread over the whole width */
+    text-align: justify;
+    text-align-last: justify;
+    background-color: #eeeeee;
+    padding: 8px 14px;
+    margin-bottom: 10px;
+}
+.amen-chapter summary{
+    cursor: pointer;
+    padding: 9px 0;
+    font-size: 14px;
+    line-height: 20px;
+    list-style: none;
+}
+.amen-chapter summary::-webkit-details-marker{
+    display: none;
+}
+.amen-chapter summary::before{
+    content: "+";
+    display: inline-block;
+    width: 18px;
+}
+.amen-chapter[open] summary::before{
+    content: "−";
+}
+.amen-chapter summary:hover{
+    text-decoration: underline;
+}
+.amen-chapter-body{
+    text-align: justify;
+    hyphens: auto;
+    padding: 2px 0 14px 18px;
+}
+.amen-chapter-body p{
+    margin-bottom: 10px;
+}
+.amen-chapter-body a{
+    color: inherit;
+}
+.amen-notes{
+    font-size: 11px;
+    line-height: 15px;
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    margin-top: 14px;
+    padding-left: 18px;
+    overflow-wrap: anywhere;
+}
+.amen-notes li{
+    margin-bottom: 6px;
+}
+.fn-ref, .fn-back{
+    text-decoration: none;
+}
+@media (max-width: 767px){
+    .amen-theory{ flex-basis: 100%; width: 100%; }
+    .amen-theory-title{ font-size: 12px; line-height: 18px; }
+    .amen-chapter-body{ padding-left: 0; }
+}
+/* cAmara: the theoretical dimension of the artistic practice, title without the grey background */
+.camara-wrap{
+    max-width: 760px;
+    margin: 0 auto;
+}
+.camara-theory{
+    width: auto;
+    margin-top: 0;
+}
+.camara-theory .amen-theory-title{
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+/* amen elevation: each column as wide as its two lines need (plus an equal share of the rest), every line on one line */
+.amen-opsi-cols{
+    justify-content: space-between;
+    gap: 16px;
+}
+.amen-col{
+    flex: 1 1 auto;
+    white-space: nowrap;
+}
+@media (max-width: 1500px){
+    .amen-opsi-cols{ gap: 4px; }
+    .amen-col{ font-size: 11px; }
+    .amen-col-part, .amen-col-sub{ font-size: 9px; }
+    .amen-col-work{ font-size: 10px; }
+}
+@media (max-width: 767px){
+    .amen-opsi-cols{ flex-direction: column; gap: 6px; }
+    .amen-col{ white-space: normal; }
+}
+/* bio: the text "instead of a CV" on the left, the spread of folio 27 of in nOmine DEI on the right */
+.bio-title{
+    font-weight: 400;
+    margin-bottom: 12px !important;
+}
+/* the picture fills the in nOmine DEI page shape like the amen slideshow (sized by js/bio.js) */
+.bio-cv{
+    margin-top: 14px;
+    text-align: right !important;
+}
+/* bio: the link to the CV, like the other links of the site (the e-mail on the contact page) */
+.bio-cv-button{
+    color: #0088cc;
+    text-decoration: none;
+}
+/* contact: the photos smaller and centred on the page, the e-mail right next to them */
+@media (min-width: 768px){
+    /* the photos in the middle of the screen, also from top to bottom (between the menu and the footer) */
+    .contact-container{
+        flex: 1 0 auto;
+        display: flex;
+        align-items: center;
+        padding-bottom: 80px;   /* a little above the middle */
+    }
+    .contact-container .row{
+        position: relative;
+        width: 100%;
+        left: -60px;   /* photos and e-mail a little to the left */
+    }
+    .contact-container .row > .col-md-9{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .contact-container .bio-carousel{
+        width: 41.25%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-container .contact{
+        position: absolute;
+        bottom: 4px;
+        left: calc(50% + 20.625% + 12px);
+        width: auto;
+    }
+}
+/* logOria: the video a little larger and centred, the text one block under it, justified to the width of the video */
+@media (min-width: 992px){
+    .logoria-container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 800px;
+        padding: 0;
+    }
+    .logoria-container .vimeo-container{
+        width: 800px;
+        height: 450px;
+    }
+}
+.vimeo-text .vimeo-poem{
+    text-align: justify;
+}
+@media (min-width: 992px){
+    /* the text to the right of the video, as tall as the video, with a scroll bar */
+    .logoria-container{
+        width: auto;
+        display: grid;
+        grid-template-columns: 800px 380px;
+        column-gap: 28px;
+        justify-content: center;
+    }
+    .logoria-container .vimeo-container{ grid-column: 1; grid-row: 1; }
+    .logoria-container .vimeo-text{ display: contents; }
+    .logoria-container .vimeo-poem{
+        grid-column: 2;
+        grid-row: 1;
+        height: 450px;
+        overflow-y: auto;
+        padding-right: 10px;
+        margin: 0 !important;
+    }
+}
+/* logOria: the credit line at the end of the text, aligned right */
+.vimeo-poem .vimeo-credit{
+    text-align: right;
+    margin-top: 9px;
+}
+.vimeo-poem p{
+    text-align: justify;
+}
+.vimeo-poem p.vimeo-credit{
+    text-align: right;
+    white-space: nowrap;   /* size set by js/logoria-credit.js */
+    margin-bottom: 0 !important;   /* level with the bottom of the video */
+    line-height: 1 !important;
+}
+@media (min-width: 992px){
+    /* the whole a little lower */
+    .logoria-container{ margin-top: 30px; }
+    /* the Greek page has only the credit line: at the bottom right */
+    .vimeo-poem:has(> .vimeo-credit:only-child){ display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+}
+/* WaveScript (ΚυματοΓραφΗ): exactly like logOria; its video is 4:3, 25% larger (725 x 544) */
+@media (min-width: 992px){
+    .wavescript-container.logoria-container{
+        margin-left: auto;
+        grid-template-columns: 725px 500px;   /* the credit line is longer: room for it at the logOria size */
+    }
+    .wavescript-container.logoria-container .vimeo-container{
+        width: 725px;
+        height: 544px;
+    }
+    .wavescript-container.logoria-container .vimeo-poem{
+        height: 544px;
+    }
 }

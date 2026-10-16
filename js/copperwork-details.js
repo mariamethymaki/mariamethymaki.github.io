@@ -3,9 +3,9 @@ var carouselElement = document.getElementById("copperworkCarousel");
 
 const url = window.location.pathname;
 var langURI = '';
-if (url === '/it/copperwork.php') 
+if (url.indexOf('/it/') === 0)
     langURI = 'it';
-else if (url === '/el/copperwork.php')
+else if (url.indexOf('/el/') === 0)
     langURI = 'el';
 
     
@@ -15,35 +15,35 @@ carouselElement.addEventListener("slide.bs.carousel", function(event) {
     switch(activeSlideIndex){
         case 0:
             if(langURI === '')
-                descriptionElement.innerHTML = "<span>CopperWork01, Copper (90x180cm) 2015. <a href="+"/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum01, copper (90×180cm) 2015. <a href="+"/copperworkdetails.html"+">cUprum in detail</a></span>";
             else if(langURI === 'it')
-                descriptionElement.innerHTML = "<span>Cuprum01, Rame (90x180cm) 2015. <a href="+"/it/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum01, rame (90×180cm) 2015. <a href="+"/it/copperworkdetails.html"+">cUprum in dettaglio</a></span>";
             else if(langURI === 'el')
-                descriptionElement.innerHTML = "<span>Χάλκινo01, Χαλκός (90x180εκ) 2015. <a href="+"/el/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>χΑλκινο01, χαλκός (90×180εκ) 2015. <a href="+"/el/copperworkdetails.html"+">χΑλκινα: λεπτομέρειες</a></span>";
             break;
         case 1:
             if(langURI === '')
-                descriptionElement.innerHTML = "<span>CopperWork02, Copper (90x90x270cm) 2015. <a href="+"/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum02, copper (90×90×270cm) 2015. <a href="+"/copperworkdetails.html"+">cUprum in detail</a></span>";
             else if(langURI === 'it')
-                descriptionElement.innerHTML = "<span>Cuprum02, Rame (90x90x270cm) 2015. <a href="+"/it/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum02, rame (90×90×270cm) 2015. <a href="+"/it/copperworkdetails.html"+">cUprum in dettaglio</a></span>";
             else if(langURI === 'el')
-                descriptionElement.innerHTML = "<span>Χάλκινo02, Χαλκός (90x90x270εκ) 2015. <a href="+"/el/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>χΑλκινο02, χαλκός (90×90×270εκ) 2015. <a href="+"/el/copperworkdetails.html"+">χΑλκινα: λεπτομέρειες</a></span>";
             break;
         case 2:
             if(langURI === '')
-                descriptionElement.innerHTML = "<span>CopperWork03, Copper (60x60x180cm) 2015. <a href="+"/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum03, copper (60×60×180cm) 2015. <a href="+"/copperworkdetails.html"+">cUprum in detail</a></span>";
             else if(langURI === 'it')
-                descriptionElement.innerHTML = "<span>Cuprum03, Rame (60x60x180cm) 2015. <a href="+"/it/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum03, rame (60×60×180cm) 2015. <a href="+"/it/copperworkdetails.html"+">cUprum in dettaglio</a></span>";
             else if(langURI === 'el')
-                descriptionElement.innerHTML = "<span>Χάλκινo03, Χαλκός (60x60x180εκ) 2015. <a href="+"/el/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>χΑλκινο03, χαλκός (60×60×180εκ) 2015. <a href="+"/el/copperworkdetails.html"+">χΑλκινα: λεπτομέρειες</a></span>";
             break;
         case 3:
             if(langURI === '')
-                descriptionElement.innerHTML = "<span>CopperWork04, Copper (180x180cm) 2015. <a href="+"/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum04, copper (180×180cm) 2015. <a href="+"/copperworkdetails.html"+">cUprum in detail</a></span>";
             else if(langURI === 'it')
-                descriptionElement.innerHTML = "<span>Cuprum04, Rame (180x180cm) 2015. <a href="+"/it/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>cUprum04, rame (180×180cm) 2015. <a href="+"/it/copperworkdetails.html"+">cUprum in dettaglio</a></span>";
             else if(langURI === 'el')
-                descriptionElement.innerHTML = "<span>Χάλκινo04, Χαλκός (180x180εκ) 2015. <a href="+"/el/copperworkdetails.php"+">CopperWork in Detail</a></span>";
+                descriptionElement.innerHTML = "<span>χΑλκινο04, χαλκός (180×180εκ) 2015. <a href="+"/el/copperworkdetails.html"+">χΑλκινα: λεπτομέρειες</a></span>";
             break;
         default:
             descriptionElement.innerHTML = "";  
