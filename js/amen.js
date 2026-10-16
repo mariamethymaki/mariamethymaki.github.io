@@ -41,7 +41,6 @@
         wrap.style.setProperty('--ph', h + 'px');
         wrap.style.setProperty('--bw', (narrow ? 2 * w : 4 * w + GAP) + 'px');
         books.forEach(function (b) { b.size(w, h); });
-        fitText(narrow);
     }
 
     /* the text under the first book is as tall as the elevation under the second: the type gets smaller (or larger, up to 13px) */

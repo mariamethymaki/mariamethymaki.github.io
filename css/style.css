@@ -1585,3 +1585,7 @@ html[lang="el"] .tetradio-description .cover-text {
     .amen-wrap .amen-opsi{ flex: 0 0 calc(2 * var(--pw)); width: calc(2 * var(--pw)); }
     .amen-wrap .amen-text p{ margin-bottom: 0; }
 }
+/* amen: the text opens on a click on "+ amen", like the chapters of cAmara, in the normal type size */
+.amen-wrap details.amen-text{ font-size: 13px; line-height: 18px; }
+.amen-wrap details.amen-text .amen-chapter-body{ padding-left: 18px; }
+.amen-wrap details.amen-text summary{ padding-top: 0; }
