@@ -1459,3 +1459,10 @@ html[lang="el"] .tetradio-description .cover-text {
     color: #0088cc;
     text-decoration: none;
 }
+/* contact: the photos one third smaller, next to the e-mail */
+@media (min-width: 768px){
+    .contact-container .bio-carousel{
+        width: 66.667%;
+        margin-right: 0;
+    }
+}
