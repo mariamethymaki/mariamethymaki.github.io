@@ -26,6 +26,20 @@
     /* outside the wrap, so that it never changes the width of the wrap (and the position of the books) */
     wrap.parentNode.insertBefore(below, wrap.nextSibling);
 
+    /* "+ amen" (as on the amen page) under the books: the text appears only when it is opened */
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'ir-toggle';
+    toggle.innerHTML = '<span class="ir-toggle-sign">+</span> amen';
+    toggle.setAttribute('aria-expanded', 'false');
+    wrap.parentNode.insertBefore(toggle, wrap.nextSibling);
+    toggle.addEventListener('click', function () {
+        var open = !document.body.classList.contains('ir-open');
+        document.body.classList.toggle('ir-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.firstChild.textContent = open ? '−' : '+';
+    });
+
     function rel(el) {
         var r = el.getBoundingClientRect(), w = wrap.getBoundingClientRect();
         return { l: r.left - w.left, t: r.top - w.top, r: r.right - w.left, b: r.bottom - w.top };

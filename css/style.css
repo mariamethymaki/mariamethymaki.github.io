@@ -1593,3 +1593,20 @@ html[lang="el"] .tetradio-description .cover-text {
 }
 .amen-wrap details.amen-text > summary::before{ width: 26px; }
 .amen-wrap details.amen-text .amen-chapter-body{ padding-left: 0; }
+/* ideal reader: the text only after "+ amen" is clicked (same size as on the amen page) */
+body:not(.ir-open) .ir-text, body:not(.ir-open) .ir-text-below{ visibility: hidden; }
+body:not(.ir-open) .ir-text-below{ display: none !important; }
+.ir-toggle{
+    display: block;
+    margin: 4px auto 10px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 26px;
+    line-height: 36px;
+    cursor: pointer;
+}
+.ir-toggle:hover{ text-decoration: underline; }
+.ir-toggle-sign{ display: inline-block; width: 26px; }
