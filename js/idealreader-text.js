@@ -111,11 +111,11 @@
         var L = rel(cells[0]), C = rel(cells[1]), N = rel(cells[2]);
         var cap = wrap.querySelector('.ir-caption');
         G = { L: L, C: C, left: L.l, right: C.r, top: N.t, bottom: cap ? rel(cap).b : N.b };
-        /* the last line of the space is kept for "+ amen", at the end of the text, far right */
-        var TH = toggle.offsetHeight || 36;
-        toggle.style.left = (G.right - toggle.offsetWidth) + 'px';
-        toggle.style.top = (G.bottom - TH) + 'px';
-        G.bottom -= TH + 4;
+        /* the first line of the space is kept for "+ amen", at the beginning of the text, top left */
+        var TH = toggle.offsetHeight || 18;
+        toggle.style.left = G.left + 'px';
+        toggle.style.top = G.top + 'px';
+        G.top += TH + 4;
         /* the largest size (in quarter pixels) at which everything fits */
         var lo = MIN * 4, hi = MAX * 4, best = 0, bestK = 0;
         while (lo <= hi) {
@@ -126,7 +126,6 @@
         flow(best / 4, bestK);
         /* "+ amen" in the type of the text, as a part of it */
         toggle.style.fontSize = boxes[0].style.fontSize; toggle.style.lineHeight = boxes[0].style.lineHeight;
-        toggle.style.left = (G.right - toggle.offsetWidth) + 'px';
     }
 
     var t;
