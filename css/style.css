@@ -1586,12 +1586,12 @@ html[lang="el"] .tetradio-description .cover-text {
 .amen-books .amen-show{ flex: none; height: var(--ph); }
 .amen-wrap details.amen-text{ flex: 0 0 var(--bw); width: var(--bw); }
 .amen-wrap details.amen-text > summary{
-    font-size: 26px;
-    line-height: 36px;
+    font-size: 18px;
+    line-height: 26px;
     text-align: center;
     padding: 6px 0;
 }
-.amen-wrap details.amen-text > summary::before{ width: 26px; }
+.amen-wrap details.amen-text > summary::before{ width: 18px; }
 .amen-wrap details.amen-text .amen-chapter-body{ padding-left: 0; }
 /* ideal reader: the text only after "+ amen" is clicked (same size as on the amen page) */
 body:not(.ir-open) .ir-text, body:not(.ir-open) .ir-text-below{ visibility: hidden; }
