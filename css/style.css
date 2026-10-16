@@ -1462,7 +1462,7 @@ html[lang="el"] .tetradio-description .cover-text {
 /* contact: the photos one third smaller, next to the e-mail */
 @media (min-width: 768px){
     .contact-container .bio-carousel{
-        width: 66.667%;
+        width: 55%;
         margin-right: 0;
     }
 }
