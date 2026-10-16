@@ -1452,6 +1452,7 @@ html[lang="el"] .tetradio-description .cover-text {
 /* the picture fills the in nOmine DEI page shape like the amen slideshow (sized by js/bio.js) */
 .bio-cv{
     margin-top: 14px;
+    text-align: right !important;
 }
 /* bio: the link to the CV, like the other links of the site (the e-mail on the contact page) */
 .bio-cv-button{
