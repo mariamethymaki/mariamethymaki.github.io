@@ -1489,3 +1489,19 @@ html[lang="el"] .tetradio-description .cover-text {
         width: auto;
     }
 }
+/* logOria: the video a little larger and centred, the text one block under it, justified to the width of the video */
+@media (min-width: 992px){
+    .logoria-container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 800px;
+        padding: 0;
+    }
+    .logoria-container .vimeo-container{
+        width: 800px;
+        height: 450px;
+    }
+}
+.vimeo-text .vimeo-poem{
+    text-align: justify;
+}
