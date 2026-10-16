@@ -36,11 +36,11 @@
         var avail = wrap.parentNode.clientWidth;
         /* the book is open: two pages side by side; the text beside it is at most one page wide */
         if (narrow) { w = Math.floor(avail / 2); h = Math.round(w * 1938 / 1200); }
-        else if (3 * w + 40 > avail) { w = Math.floor((avail - 40) / 3); h = Math.round(w * 1938 / 1200); }
+        else if (2 * w > avail) { w = Math.floor(avail / 2); h = Math.round(w * 1938 / 1200); }
         wrap.style.setProperty('--pw', w + 'px');
         wrap.style.setProperty('--ph', h + 'px');
         if (window.amenBookSize) { window.amenBookSize(w, h); }
-        fitText(narrow ? 0 : w, h);
+        fitText(0, h);   /* the text is under the book, as wide as the book */
     }
 
     /* the text starts at the top of the picture and ends at its bottom: it is made as narrow as needed

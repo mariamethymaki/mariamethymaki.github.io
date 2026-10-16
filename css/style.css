@@ -1276,8 +1276,8 @@ html[lang="el"] .tetradio-description .cover-text {
     row-gap: 14px;
 }
 .amen-opsi{
-    flex: 0 0 calc(2 * var(--pw) + 40px + var(--tw, var(--pw)));
-    width: calc(2 * var(--pw) + 40px + var(--tw, var(--pw)));
+    flex: 0 0 calc(2 * var(--pw));
+    width: calc(2 * var(--pw));
     padding-bottom: 10px;
 }
 .amen-opsi-pic{
@@ -1343,8 +1343,8 @@ html[lang="el"] .tetradio-description .cover-text {
 
 /* amen: the theoretical dimension of the artistic practice, under the elevation; three chapters that open on a click */
 .amen-theory{
-    flex: 0 0 calc(2 * var(--pw) + 40px + var(--tw, var(--pw)));
-    width: calc(2 * var(--pw) + 40px + var(--tw, var(--pw)));
+    flex: 0 0 calc(2 * var(--pw));
+    width: calc(2 * var(--pw));
     margin-top: -14px;   /* cancels the row gap of the wrap: right under the elevation */
     padding-bottom: 20px;
 }
@@ -1563,3 +1563,9 @@ html[lang="el"] .tetradio-description .cover-text {
 /* amen: the slideshow as an open book turned with turn.js (js/amen.js) */
 #amenBook .amen-page{ background: #fff; overflow: hidden; }
 #amenBook .amen-page img{ position: static; display: block; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: none; }
+/* amen: the text under the book, as wide as the book */
+.amen-wrap .amen-text{
+    flex: 0 0 calc(2 * var(--pw));
+    width: calc(2 * var(--pw));
+    height: auto;
+}
