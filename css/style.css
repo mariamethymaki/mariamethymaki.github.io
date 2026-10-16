@@ -1411,3 +1411,17 @@ html[lang="el"] .tetradio-description .cover-text {
     .amen-theory-title{ font-size: 12px; line-height: 18px; }
     .amen-chapter-body{ padding-left: 0; }
 }
+/* cAmara: the theoretical dimension of the artistic practice, title without the grey background */
+.camara-wrap{
+    max-width: 900px;
+    margin: 0 auto;
+}
+.camara-theory{
+    width: auto;
+    margin-top: 0;
+}
+.camara-theory .amen-theory-title{
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
