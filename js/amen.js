@@ -34,8 +34,9 @@
         var h = window.innerHeight - ch(top) - ch(foot) - 100;
         var w = Math.round(h * 1200 / 1938);
         var avail = wrap.parentNode.clientWidth;
-        if (narrow) { w = avail; h = Math.round(w * 1938 / 1200); }
-        else if (2 * w + 40 > avail) { w = Math.floor((avail - 40) / 2); h = Math.round(w * 1938 / 1200); }
+        /* the book is open: two pages side by side; the text beside it is at most one page wide */
+        if (narrow) { w = Math.floor(avail / 2); h = Math.round(w * 1938 / 1200); }
+        else if (3 * w + 40 > avail) { w = Math.floor((avail - 40) / 3); h = Math.round(w * 1938 / 1200); }
         wrap.style.setProperty('--pw', w + 'px');
         wrap.style.setProperty('--ph', h + 'px');
         fitText(narrow ? 0 : w, h);
@@ -68,31 +69,54 @@
     window.addEventListener('load', size);
     window.addEventListener('resize', size);
 
-    var imgs = show.querySelectorAll('img'), front = 0, last = null;
-    function step() {
-        var b, i;
+    /* the slideshow is an open book: a random spread of a random book; every 2 seconds the right page turns over
+       and the next random spread appears (two times out of three from the handmade notebooks, never their covers) */
+    show.innerHTML = '<img class="pg-left" alt=""><img class="pg-right" alt="">' +
+        '<div class="leaf"><img class="leaf-front" alt=""><img class="leaf-back" alt=""></div>';
+    var L = show.querySelector('.pg-left'), R = show.querySelector('.pg-right'), leaf = show.querySelector('.leaf'),
+        LF = show.querySelector('.leaf-front'), LB = show.querySelector('.leaf-back');
+    var last = null, busy = false;
+    function pick() {
+        var b, n;
         do {
-            /* two times out of three one of the four handmade notebooks, otherwise one of the phenOmena books */
             var hand = Math.random() < 2 / 3 || books.length === HANDMADE;
             b = hand ? books[Math.floor(Math.random() * HANDMADE)]
                      : books[HANDMADE + Math.floor(Math.random() * (books.length - HANDMADE))];
-            /* the handmade notebooks without their first and last page (the covers) */
-            i = hand ? 1 + Math.floor(Math.random() * (b.pages - 2)) : Math.floor(Math.random() * b.pages);
-        } while (b.src(i) === last);
-        last = b.src(i);
-        var pre = new Image();
-        pre.onload = function () {
-            var next = imgs[1 - front];
-            next.src = pre.src;
-            next.classList.add('on');
-            imgs[front].classList.remove('on');
-            front = 1 - front;
-            show.href = lang + b.href + spreadHash(b.page(i));
-        };
-        pre.onerror = step;
-        pre.src = last;
+            /* left page number n is even (as in the flipbooks); images n-1 and n */
+            var lo = 2, hi = hand ? b.pages - 2 : b.pages - 1;
+            n = lo + 2 * Math.floor(Math.random() * Math.floor((hi - lo) / 2 + 1));
+        } while (b.src(n - 1) + n === last);
+        last = b.src(n - 1) + n;
+        return { b: b, left: b.src(n - 1), right: b.src(n), href: lang + b.href + '#p=' + n };
     }
-    step();
+    function load(srcs, done) {
+        var k = srcs.length;
+        srcs.forEach(function (s) { var im = new Image(); im.onload = im.onerror = function () { if (--k === 0) { done(); } }; im.src = s; });
+    }
+    function first() {
+        var s = pick();
+        load([s.left, s.right], function () { L.src = s.left; R.src = s.right; show.href = s.href; show.classList.add('ready'); });
+    }
+    function turn() {
+        if (busy) { return; }
+        busy = true;
+        var s = pick();
+        load([s.left, s.right], function () {
+            LF.src = R.src;          /* the page that turns: the current right page ... */
+            LB.src = s.left;         /* ... with the new left page on its back */
+            R.src = s.right;         /* under it, the new right page */
+            leaf.classList.remove('turned');
+            leaf.style.display = 'block';
+            void leaf.offsetWidth;
+            leaf.classList.add('turned');
+            setTimeout(function () {
+                L.src = s.left; show.href = s.href;
+                leaf.style.display = 'none'; leaf.classList.remove('turned');
+                busy = false;
+            }, 900);
+        });
+    }
+    first();
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!still) { setInterval(step, 3500); }
+    if (!still) { setInterval(turn, 2000); }
 })();
