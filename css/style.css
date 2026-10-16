@@ -1606,10 +1606,10 @@ body:not(.ir-open) .ir-text-below{ display: none !important; }
     background: none;
     color: inherit;
     font: inherit;
-    font-size: 26px;
-    line-height: 36px;
+    font-size: 13px;
+    line-height: 18px;
     cursor: pointer;
 }
 .ir-toggle:hover{ text-decoration: underline; }
-.ir-toggle-sign{ display: inline-block; width: 26px; }
+.ir-toggle-sign{ display: inline-block; width: 0.9em; }
 @media (max-width: 767px){ .ir-toggle{ position: static; margin: 10px 0 10px auto; } }

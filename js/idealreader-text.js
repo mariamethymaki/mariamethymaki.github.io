@@ -124,6 +124,9 @@
         }
         if (!best) { plain(); return; }
         flow(best / 4, bestK);
+        /* "+ amen" in the type of the text, as a part of it */
+        toggle.style.fontSize = boxes[0].style.fontSize; toggle.style.lineHeight = boxes[0].style.lineHeight;
+        toggle.style.left = (G.right - toggle.offsetWidth) + 'px';
     }
 
     var t;
