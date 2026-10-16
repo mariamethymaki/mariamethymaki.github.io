@@ -1536,10 +1536,12 @@ html[lang="el"] .tetradio-description .cover-text {
 .vimeo-poem p.vimeo-credit{
     text-align: right;
     white-space: nowrap;   /* size set by js/logoria-credit.js */
+    margin-bottom: 0 !important;   /* level with the bottom of the video */
+    line-height: 1 !important;
 }
 @media (min-width: 992px){
     /* the whole a little lower */
     .logoria-container{ margin-top: 30px; }
     /* the Greek page has only the credit line: at the bottom right */
-    .vimeo-poem:has(> .vimeo-credit:only-child){ display: flex; flex-direction: column; justify-content: flex-end; }
+    .vimeo-poem:has(> .vimeo-credit:only-child){ display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
 }
