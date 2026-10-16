@@ -1461,8 +1461,15 @@ html[lang="el"] .tetradio-description .cover-text {
 }
 /* contact: the photos smaller and centred on the page, the e-mail right next to them */
 @media (min-width: 768px){
+    /* the photos in the middle of the screen, also from top to bottom (between the menu and the footer) */
+    .contact-container{
+        flex: 1 0 auto;
+        display: flex;
+        align-items: center;
+    }
     .contact-container .row{
         position: relative;
+        width: 100%;
     }
     .contact-container .row > .col-md-9{
         flex: 0 0 100%;
