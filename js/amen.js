@@ -70,7 +70,7 @@
         return d;
     }
 
-    function Book(show, pool, skipCovers, every) {
+    function Book(show, pool, skipCovers, every, reverse) {
         show.innerHTML = '<div class="amen-book"></div>';
         var $book = jQuery(show.firstChild), last = null, ready = false, busy = false, PW = 0, PH = 0, hrefs = {};
         function pick() {
@@ -87,9 +87,12 @@
         function build(s) {
             if (ready) { $book.turn('destroy'); }
             $book.empty();
-            $book.append(pageEl(s.left)).append(pageEl(s.left)).append(pageEl(s.right));   /* page 1 is never shown */
+            /* page 1 is never shown; in a book that opens backwards the lower page number is on the right */
+            var a = reverse ? s.right : s.left, b = reverse ? s.left : s.right;
+            $book.append(pageEl(a)).append(pageEl(a)).append(pageEl(b));
             hrefs = { 2: s.href };
-            $book.turn({ page: 2, display: 'double', width: 2 * PW, height: PH, acceleration: false, gradients: true,
+            /* reverse: the book opens backwards (right to left), its pages turn from left to right */
+            $book.turn({ page: 2, display: 'double', direction: reverse ? 'rtl' : 'ltr', width: 2 * PW, height: PH, acceleration: false, gradients: true,
                          elevation: 50, duration: Math.min(900, every * 0.6),
                          when: { turned: function () { var v = $book.turn('view'); if (hrefs[v[0]]) { show.href = hrefs[v[0]]; } busy = false; } } });
             $book.turn('disable', true);   /* no turning by hand: a click opens the book */
@@ -103,8 +106,8 @@
             load([s.left, s.right], function () {
                 var n = $book.turn('pages');
                 if (n > 120) { build(s); busy = false; return; }   /* start a fresh book now and then */
-                $book.turn('addPage', pageEl(s.left), n + 1);
-                $book.turn('addPage', pageEl(s.right), n + 2);
+                $book.turn('addPage', pageEl(reverse ? s.right : s.left), n + 1);
+                $book.turn('addPage', pageEl(reverse ? s.left : s.right), n + 2);
                 hrefs[n + 1] = s.href;
                 $book.turn('disable', false); $book.turn('next'); $book.turn('disable', true);
             });
@@ -121,7 +124,7 @@
 
     if (window.jQuery && jQuery.fn.turn) {
         books.push(new Book(shows[0], handmade, true, 2500));
-        books.push(new Book(shows[1], phenomena, false, 1500));
+        books.push(new Book(shows[1], phenomena, false, 1500, true));   /* the second book opens backwards */
     }
     size();
     if (document.fonts && document.fonts.ready) { document.fonts.ready.then(size); }
