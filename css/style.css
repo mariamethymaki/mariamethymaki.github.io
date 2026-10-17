@@ -1200,8 +1200,6 @@ html[lang="el"] .tetradio-description .cover-text {
 .amen-show{
     display: block;
     position: relative;
-    flex: 0 0 var(--pw);
-    width: var(--pw);
     height: var(--ph);
 }
 .amen-show img{
@@ -1275,8 +1273,8 @@ html[lang="el"] .tetradio-description .cover-text {
     row-gap: 14px;
 }
 .amen-opsi{
-    flex: 0 0 calc(var(--pw) + 40px + var(--tw, var(--pw)));
-    width: calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    flex: 0 0 var(--bw);
+    width: var(--bw);
     padding-bottom: 10px;
 }
 .amen-opsi-pic{
@@ -1342,8 +1340,8 @@ html[lang="el"] .tetradio-description .cover-text {
 
 /* amen: the theoretical dimension of the artistic practice, under the elevation; three chapters that open on a click */
 .amen-theory{
-    flex: 0 0 calc(var(--pw) + 40px + var(--tw, var(--pw)));
-    width: calc(var(--pw) + 40px + var(--tw, var(--pw)));
+    flex: 0 0 var(--bw);
+    width: var(--bw);
     margin-top: -14px;   /* cancels the row gap of the wrap: right under the elevation */
     padding-bottom: 20px;
 }
@@ -1559,3 +1557,58 @@ html[lang="el"] .tetradio-description .cover-text {
         height: 544px;
     }
 }
+/* amen: the slideshow as an open book turned with turn.js (js/amen.js) */
+.amen-book .amen-page{ background: #fff; overflow: hidden; }
+.amen-book .amen-page img{ position: static; display: block; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: none; }
+/* amen: the text under the book, as wide as the book */
+.amen-wrap .amen-text{
+    flex: 0 0 var(--bw);
+    width: var(--bw);
+    height: auto;
+}
+/* amen: the two books side by side */
+.amen-books{
+    display: flex;
+    gap: 24px;
+    flex: 0 0 var(--bw);
+    width: var(--bw);
+}
+.amen-books .amen-show{
+    flex: 0 0 calc(2 * var(--pw));
+    width: calc(2 * var(--pw));
+}
+/* amen: the text opens on a click on "+ amen", like the chapters of cAmara, in the normal type size */
+.amen-wrap details.amen-text{ font-size: 13px; line-height: 18px; }
+.amen-wrap details.amen-text .amen-chapter-body{ padding-left: 18px; }
+.amen-wrap details.amen-text summary{ padding-top: 0; }
+/* amen: book 1, under it book 2, then "+ amen" in the middle (larger), then the text when opened and the elevation */
+@media (max-width: 767px){ .amen-books{ flex-direction: column; } .amen-books .amen-show{ flex: none; } }
+.amen-wrap details.amen-text{ flex: 0 0 var(--bw); width: var(--bw); }
+.amen-wrap details.amen-text > summary{
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    padding: 6px 0;
+}
+.amen-wrap details.amen-text > summary::before{ width: 18px; }
+.amen-wrap details.amen-text .amen-chapter-body{ padding-left: 0; }
+/* ideal reader: the text only after "+ amen" is clicked (same size as on the amen page) */
+body:not(.ir-open) .ir-text, body:not(.ir-open) .ir-text-below{ visibility: hidden; }
+body:not(.ir-open) .ir-text-below{ display: none !important; }
+.ir-toggle{
+    display: block;
+    position: absolute;
+    margin: 0;
+    white-space: nowrap;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    cursor: pointer;
+}
+.ir-toggle:hover{ text-decoration: underline; }
+.ir-toggle-sign{ display: inline-block; width: 0.9em; }
+@media (max-width: 767px){ .ir-toggle{ position: static; margin: 10px 0 10px auto; } }

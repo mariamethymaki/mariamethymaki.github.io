@@ -26,6 +26,20 @@
     /* outside the wrap, so that it never changes the width of the wrap (and the position of the books) */
     wrap.parentNode.insertBefore(below, wrap.nextSibling);
 
+    /* "+ amen" (as on the amen page) under the books: the text appears only when it is opened */
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'ir-toggle';
+    toggle.innerHTML = '<span class="ir-toggle-sign">+</span> amen';
+    toggle.setAttribute('aria-expanded', 'false');
+    wrap.appendChild(toggle);   /* placed at the end of the text, far right, in layout() */
+    toggle.addEventListener('click', function () {
+        var open = !document.body.classList.contains('ir-open');
+        document.body.classList.toggle('ir-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.firstChild.textContent = open ? '−' : '+';
+    });
+
     function rel(el) {
         var r = el.getBoundingClientRect(), w = wrap.getBoundingClientRect();
         return { l: r.left - w.left, t: r.top - w.top, r: r.right - w.left, b: r.bottom - w.top };
@@ -97,6 +111,11 @@
         var L = rel(cells[0]), C = rel(cells[1]), N = rel(cells[2]);
         var cap = wrap.querySelector('.ir-caption');
         G = { L: L, C: C, left: L.l, right: C.r, top: N.t, bottom: cap ? rel(cap).b : N.b };
+        /* the first line of the space is kept for "+ amen", at the beginning of the text, top left */
+        var TH = toggle.offsetHeight || 18;
+        toggle.style.left = G.left + 'px';
+        toggle.style.top = G.top + 'px';
+        G.top += TH + 4;
         /* the largest size (in quarter pixels) at which everything fits */
         var lo = MIN * 4, hi = MAX * 4, best = 0, bestK = 0;
         while (lo <= hi) {
@@ -105,6 +124,8 @@
         }
         if (!best) { plain(); return; }
         flow(best / 4, bestK);
+        /* "+ amen" in the type of the text, as a part of it */
+        toggle.style.fontSize = boxes[0].style.fontSize; toggle.style.lineHeight = boxes[0].style.lineHeight;
     }
 
     var t;
